@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700;800;900&family=Quattrocento+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+nav {
+  font-family: "Cinzel Decorative", cursive;
+  background-color: #75aadb;
+  height: 150px;
+  display: flex;
+  box-shadow: 2px 2px 4px rgb(167, 168, 168);
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 2rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo h1 {
+  color: white;
+}
+.logo img {
+  height: 100px;
+}
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.font-aw-icons {
+  color: #ffffff;
+  height: 25px;
+  width: 25px;
+}
+
+@media screen and (max-width: 600px) {
+  .font-aw-icons {
+    display: none;
+  }
+  nav {
+    justify-content: center;
+  }
+}
