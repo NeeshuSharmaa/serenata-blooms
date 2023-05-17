@@ -1,27 +1,34 @@
 import { v4 as uuid } from "uuid";
 
-/**
- * Category Database can be added here.
- * You can add category of your wish with different attributes
- * */
-
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "fiction",
+    categoryName: "Sympathy",
     description:
-      "literature in the form of prose, especially novels, that describes imaginary events and people",
+      "Sending bereavement and sympathy flowers to someone who has suffered a loss is a kind gesture. It will remind them that you are there for them in their time of need. Whichever you choose, you can rest assured that your condolences will be greatly appreciated.",
   },
   {
     _id: uuid(),
-    categoryName: "non-fiction",
+    categoryName: "Cheer Up",
     description:
-      "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
+      "Looking to cheer someone up? Look no further! Flowers are proven to bring happiness and joy to someone’s life. Just the presence of flowers in your loved one’s homes can brighten up their day, add some freshness, and make them smile.",
   },
   {
     _id: uuid(),
-    categoryName: "horror",
+    categoryName: "Apology",
     description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
+      "Say it like you mean it – I'm Sorry – with a selection from our collection of I'm Sorry flowers, plants, and gifts. Apology flowers make apologies easy, but nonetheless sincere.",
+  },
+  {
+    _id: uuid(),
+    categoryName: "Birthday",
+    description:
+      "Sending birthday flowers is a special way to remind your family and friends how happy you are that they are in your life. Serenata Blooms’s brilliant collection of Happy Birthday Flowers are specially designed to celebrate the joy and delight of the special day and is sure to put a smile on the person’s face.",
+  },
+  {
+    _id: uuid(),
+    categoryName: "Get Well",
+    description:
+      "Wish your loved ones the best with good luck bouquets fresh from Serenata Blooms. Whether they have a significant life change coming up or could just use some extra luck, bring them some good fortune with a bright, vibrant bouquet from our collection.",
   },
 ];
