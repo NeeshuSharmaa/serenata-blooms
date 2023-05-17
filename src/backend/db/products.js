@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 
-export const flowers = [
+export const products = [
   {
     _id: uuid(),
     name: "Clear Skies",
