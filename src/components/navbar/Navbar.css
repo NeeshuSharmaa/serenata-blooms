@@ -5,7 +5,7 @@ nav {
   background-color: #75aadb;
   height: 150px;
   display: flex;
-  box-shadow: 2px 2px 4px rgb(167, 168, 168);
+  /* box-shadow: 1px 2px 4px rgb(180, 179, 179); */
   justify-content: space-between;
   align-items: center;
   padding-right: 2rem;
@@ -14,16 +14,31 @@ nav {
   right: 0;
   left: 0;
 }
-.logo {
+.logo-outer {
   display: flex;
   align-items: center;
 }
-.logo h1 {
-  color: white;
-}
-.logo img {
+.logo-outer img {
   height: 100px;
 }
+.logo-inner {
+  font-family: "Cinzel", serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+.logo-inner h1 {
+  color: white;
+  font-size: 2.2rem;
+  position: relative;
+  top: 25px;
+}
+.logo-inner small {
+  position: relative;
+  top: 20px;
+}
+
 .nav-links {
   display: flex;
   gap: 2rem;
@@ -39,6 +54,12 @@ nav {
   .font-aw-icons {
     display: none;
   }
+  .logo-inner h1 {
+    font-size: 1.5rem;
+  }
+  /* .logo-inner small {
+    display: none;
+  } */
   nav {
     justify-content: center;
   }

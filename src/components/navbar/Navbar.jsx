@@ -9,9 +9,12 @@ import {
 export default function Navbar() {
   return (
     <nav>
-      <div className="logo">
+      <div className="logo-outer">
         <img src="/assets/images/logo.png" />
-        <h1>erenata Blooms</h1>
+        <div className="logo-inner">
+          <h1>erenata Blooms</h1>
+          <small>Where Timeless Beauty Meets Unforgettable Moments. </small>
+        </div>
       </div>
       <div className="nav-links">
         <FontAwesomeIcon icon={faCartShopping} className="font-aw-icons" />
