@@ -4,6 +4,7 @@ import "./App.css";
 import Navbar from "./frontend/components/navbar/Navbar";
 import Home from "./frontend/pages/home/Home";
 import Mockman from "mockman-js";
+import Footer from "./frontend/components/footer/Footer";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/mockman" element={<Mockman />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
