@@ -3,7 +3,7 @@
   box-sizing: border-box;
   --primary-blue: #75aadb;
   --primary-green: #c5e1a5;
-  --primary-cream: #fffdf8;
+  --primary-cream: #fff6e0;
   --dark-green: #3c4619;
   --cream-btn-shadow: 1px 2px 4px rgb(180, 179, 179);
 }
@@ -26,4 +26,18 @@ button:hover {
 
 .img-div {
   font-size: 0;
+}
+
+.tag {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+@media screen and (max-width: 600px) {
+  .heading {
+    font-size: 2rem;
+  }
+  .para {
+    padding: 0 1rem;
+  }
 }

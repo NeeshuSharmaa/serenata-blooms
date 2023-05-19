@@ -8,7 +8,7 @@ export default function Categories() {
   return (
     <div className="categories-comp">
       <div className="head-small">
-        <h1 className="heading">Discover by OCCASSIONAL Categories</h1>
+        <h1 className="heading">Discover by OCCASSION</h1>
         <p className="para">
           Create Memories with the essence of flowers and brigthen up someone's
           day
