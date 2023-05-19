@@ -10,6 +10,7 @@ export const products = [
     image: "/assets/images/clear_skies.jpeg",
     price: 6994,
     categoryName: "Sympathy",
+    tag: "bestseller",
   },
   {
     _id: uuid(),
@@ -60,6 +61,7 @@ export const products = [
     price: 11999,
     image: "/assets/images/the_april.webp",
     categoryName: "Sympathy",
+    tag: "bestseller",
   },
   {
     _id: uuid(),
@@ -120,6 +122,7 @@ export const products = [
     price: 3620,
     image: "/assets/images/garden_of_love.webp",
     categoryName: "Birthday",
+    tag: "bestseller",
   },
   {
     _id: uuid(),
@@ -129,7 +132,7 @@ export const products = [
     blooms: ["carnation", "rose"],
     price: 4620,
     image: "/assets/images/sweet_pretty.webp",
-    categoryName: "Cheer Up",
+    categoryName: "Apology",
   },
   {
     _id: uuid(),
@@ -139,7 +142,7 @@ export const products = [
     blooms: ["carnation", "lily", "stock", "rose"],
     price: 8068,
     image: "/assets/images/spirit_basket.webp",
-    categoryName: "Cheer Up",
+    categoryName: "Apology",
   },
   {
     _id: uuid(),
@@ -149,7 +152,7 @@ export const products = [
     blooms: ["kalanchoes", "pothos", "croton"],
     price: 5348,
     image: "/assets/images/sunshine_joy.webp",
-    categoryName: "Cheer Up",
+    categoryName: "Birthday",
   },
   {
     _id: uuid(),
@@ -162,27 +165,27 @@ export const products = [
     categoryName: "Cheer Up",
   },
   {
-    id: uuid(),
+    _id: uuid(),
     name: "Classic White Calla Lily",
     description:
       "It's just, a little blush! Whoever you're sending this bouquet to, your loved ones are sure to crush hard on these gorgeous pink and white shades.",
     blooms: ["lily"],
     price: 4772,
     image: "/assets/images/white_calla_lily.webp",
-    categoryName: "Cheer Up",
+    categoryName: "Get Well",
   },
   {
-    id: uuid(),
+    _id: uuid(),
     name: "Peace Lily",
     description:
       "Peace lilies are a popular plant for many reasons. If you're a brand new plant parent, these plants both purify the air and are notoriously easy to care for.",
     blooms: ["lily"],
     price: 4772,
     image: "/assets/images/peace_lily.webp",
-    categoryName: "Cheer Up",
+    categoryName: "Get Well",
   },
   {
-    id: uuid(),
+    _id: uuid(),
     name: "Lavender Fields",
     description:
       "Picked fresh from the farm to offer your special recipient a bouquet blooming with a sweet appeal, the Lavender Fields Mixed Flower Bouquet is set to send your warmest greetings to friends and family near and far.",
@@ -192,7 +195,7 @@ export const products = [
     categoryName: "Get Well",
   },
   {
-    id: uuid(),
+    _id: uuid(),
     name: "Fresh Peony",
     description:
       "Send a spring favorite to your favorite person with our Fresh Peony Bouquet. The assorted pink peonies are one of the season's prettiest flowers and will arrive in bud form to watch them bloom.",
@@ -200,9 +203,10 @@ export const products = [
     price: 8227,
     image: "/assets/images/fresh_peony.webp",
     categoryName: "Get Well",
+    tag: "bestseller",
   },
   {
-    id: uuid(),
+    _id: uuid(),
     name: "Graceful Gardenia",
     description:
       "These elegant bright blooms are designed to celebrate the beauty of life.",
@@ -212,7 +216,7 @@ export const products = [
     categoryName: "Get Well",
   },
   {
-    id: uuid(),
+    _id: uuid(),
     name: "Vanilla Blossom",
     description:
       "Send a spring favorite to your favorite person with our Fresh Peony Bouquet. The assorted pink peonies are one of the season's prettiest flowers and will arrive in bud form to watch them bloom.",
@@ -222,7 +226,7 @@ export const products = [
     categoryName: "Get Well",
   },
   {
-    id: uuid(),
+    _id: uuid(),
     name: "Rainbow Garden of Blooms",
     description:
       "There's nothing plain about this beautiful bouquet. Filled with white roses, hydrangeas, gerbera daisies, mini calla lilies, and Limonium, this classic arrangement is the epitome of taste.",
@@ -232,7 +236,7 @@ export const products = [
     categoryName: "Get Well",
   },
   {
-    id: uuid(),
+    _id: uuid(),
     name: "Marmalade Skies",
     description:
       "Flowers of yellow and green, and pops of orange and purple. Full of color and texture, all you need is love and our Marmalade Skies Bouquet.",
@@ -242,7 +246,7 @@ export const products = [
     categoryName: "Get Well",
   },
   {
-    id: uuid(),
+    _id: uuid(),
     name: "Cottagecore",
     description:
       "Romanticize every moment of their life once Cottagecore arrives. Designed with an array of pretty pastel flowers, this bouquet takes them out of their day–to–day and into the countryside.",
@@ -252,7 +256,7 @@ export const products = [
     categoryName: "Apology",
   },
   {
-    id: uuid(),
+    _id: uuid(),
     name: "Mother of Pearl Rose",
     description:
       "Send luminous pale pink roses that will bloom profusely in flushes from Spring to Fall. Wrapped in a burlap covering and tied with an elegant bow, ready to be planted in the garden or kept indoors.",
@@ -262,7 +266,7 @@ export const products = [
     categoryName: "Apology",
   },
   {
-    id: uuid(),
+    _id: uuid(),
     name: "Bliss White Orchid",
     description:
       "The most popular variety of this plant, the Phalaenopsis orchid makes a great gift for plant lovers and plant beginners alike! White orchids are easy to care for and add a touch of delicate beauty to any home, office or table.",
@@ -272,7 +276,7 @@ export const products = [
     categoryName: "Apology",
   },
   {
-    id: uuid(),
+    _id: uuid(),
     name: "Sky Blue Delight",
     description:
       "The hydrangea and ivory rose bouquet exudes an elegant and timeless charm with its combination of delicate hydrangea blooms and pristine ivory roses, blending the lushness of hydrangeas with the purity and sophistication of ivory roses.",
@@ -280,9 +284,10 @@ export const products = [
     price: 4278,
     image: "/assets/images/sky_blue_delight.webp",
     categoryName: "Apology",
+    tag: "bestseller",
   },
   {
-    id: uuid(),
+    _id: uuid(),
     name: "Pink Petals Roselea",
     description:
       "The hydrangea and ivory rose bouquet exudes an elegant and timeless charm with its combination of delicate hydrangea blooms and pristine ivory roses, blending the lushness of hydrangeas with the purity and sophistication of ivory roses.",
@@ -292,7 +297,7 @@ export const products = [
     categoryName: "Apology",
   },
   {
-    id: uuid(),
+    _id: uuid(),
     name: "Belle of the Ball",
     description:
       "Arranged with elegant florals and fragrance, this show-stopping collection of lilies and irises shares the perfect expression for any reason or occasion.",
@@ -300,5 +305,6 @@ export const products = [
     price: 2879,
     image: "/assets/images/belle_ball.webp",
     categoryName: "Apology",
+    tag: "bestseller",
   },
 ];

@@ -2,10 +2,10 @@
 
 nav {
   font-family: "Cinzel Decorative", cursive;
-  background-color: #75aadb;
+  background-color: var(--primary-blue);
   height: 150px;
   display: flex;
-  /* box-shadow: 1px 2px 4px rgb(180, 179, 179); */
+  box-shadow: 1px 2px 4px rgb(180, 179, 179);
   justify-content: space-between;
   align-items: center;
   padding-right: 2rem;
@@ -13,6 +13,7 @@ nav {
   top: 0;
   right: 0;
   left: 0;
+  z-index: 5;
 }
 .logo-outer {
   display: flex;
@@ -38,14 +39,23 @@ nav {
   position: relative;
   top: 20px;
 }
-
+.search-nav {
+  padding: 1rem;
+  width: 700px;
+  border-radius: 0.2rem;
+  font-size: 1.25rem;
+  border: 0;
+}
+.search-nav:focus {
+  outline: none;
+}
 .nav-links {
   display: flex;
   gap: 2rem;
 }
 
 .font-aw-icons {
-  color: #ffffff;
+  color: white;
   height: 25px;
   width: 25px;
 }
@@ -54,12 +64,19 @@ nav {
   .font-aw-icons {
     display: none;
   }
+  nav {
+    height: 120px;
+  }
+  .logo-outer img {
+    height: 70px;
+  }
   .logo-inner h1 {
     font-size: 1.5rem;
+    top: 15px;
   }
-  /* .logo-inner small {
+  .logo-inner small {
     display: none;
-  } */
+  }
   nav {
     justify-content: center;
   }

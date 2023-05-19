@@ -1,4 +1,29 @@
 * {
   margin: 0;
   box-sizing: border-box;
+  --primary-blue: #75aadb;
+  --primary-green: #c5e1a5;
+  --primary-cream: #fffdf8;
+  --dark-green: #3c4619;
+  --cream-btn-shadow: 1px 2px 4px rgb(180, 179, 179);
+}
+
+a,
+button:hover {
+  cursor: pointer;
+}
+.head-small p {
+  padding-top: 1rem;
+}
+.heading {
+  text-align: center;
+  font-size: 3rem;
+}
+.para {
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.img-div {
+  font-size: 0;
 }

@@ -1,0 +1,18 @@
+.hero {
+  width: 100vw;
+  position: relative;
+}
+
+.banner {
+  margin-top: 150px;
+  height: 400px;
+  width: 100%;
+  box-shadow: 1px 2px 4px rgb(212, 211, 211);
+}
+
+@media screen and (max-width: 600px) {
+  .banner {
+    margin-top: 120px;
+    height: 200px;
+  }
+}

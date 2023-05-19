@@ -16,6 +16,7 @@ export default function Navbar() {
           <small>Where Timeless Beauty Meets Unforgettable Moments. </small>
         </div>
       </div>
+
       <div className="nav-links">
         <FontAwesomeIcon icon={faCartShopping} className="font-aw-icons" />
         <FontAwesomeIcon icon={faHeart} className="font-aw-icons" />

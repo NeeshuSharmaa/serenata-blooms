@@ -1,11 +1,12 @@
-import "./Hero.css";
+import "./About.css";
 
-export default function Hero() {
+export default function About() {
   return (
-    <div className="hero">
-      <img className="hero-img" src="/assets/images/smile.png" />
+    <div className="about">
+      <img className="about-img" src="/assets/images/smile.png" />
 
-      <div className="hero-content">
+      <div className="about-content">
+        <h1>ABOUT US</h1>
         <p>
           We don’t just send flowers. We help you care wildly. We treat every
           order like it’s our own. The joy and happiness that comes from sending
@@ -19,7 +20,7 @@ export default function Hero() {
           the Serenata Blooms promise.
         </p>
         <button className="discover-btn">
-          Discover a World of Opulent Blossoms
+          Discover a World of Opulent Blossoms <b>{">"}</b>
         </button>
       </div>
     </div>

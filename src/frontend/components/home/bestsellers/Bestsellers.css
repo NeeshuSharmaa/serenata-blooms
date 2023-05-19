@@ -1,0 +1,45 @@
+.bestsellers {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 0 2rem 2rem 2rem;
+}
+.best {
+  width: 400px;
+}
+.best div > img {
+  width: 400px;
+  height: 400px;
+  border-top-left-radius: 0.2rem;
+  border-top-right-radius: 0.2rem;
+}
+.best-info {
+  padding: 1rem 0 1rem 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+.best-info div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.best-info h3 {
+  font-size: 1.5rem;
+}
+.best-info p {
+  font-size: 1.25rem;
+}
+.best-info button {
+  background-color: var(--primary-blue);
+  color: white;
+  border: 0;
+  height: max-content;
+  padding: 1rem;
+  align-self: center;
+  border-radius: 0.2rem;
+}
+.bestsellers-list {
+  display: flex;
+  overflow-x: scroll;
+  gap: 2rem;
+}
