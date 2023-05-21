@@ -45,19 +45,15 @@
   align-self: center;
   border-radius: 0.2rem;
 }
-
-.tag-best {
-  position: absolute;
-  top: 10px;
-  left: -20px;
-  background-color: var(--primary-cream);
+.best-info button:hover {
+  background-color: var(--dark-blue);
 }
 
 @media screen and (max-width: 600px) {
   .best {
-    width: 80vw;
+    width: 80%;
   }
   .best div > img {
-    width: 80vw;
+    width: 80%;
   }
 }

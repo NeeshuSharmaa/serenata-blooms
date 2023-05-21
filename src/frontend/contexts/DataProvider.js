@@ -9,7 +9,7 @@ export default function DataProvider({ children }) {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
 
-  const bestsellers = products.filter((prod) => prod.tag === "bestseller");
+  const bestsellers = products.filter((prod) => prod.tag === "Bestseller");
 
   const getData = async () => {
     try {

@@ -3,16 +3,15 @@
 nav {
   font-family: "Cinzel Decorative", cursive;
   background-color: var(--primary-blue);
-  height: 150px;
+  height: 100px;
   display: flex;
-  box-shadow: 1px 2px 4px rgb(180, 179, 179);
+  box-shadow: 1px 2px 4px rgb(193, 192, 192);
   justify-content: space-between;
   align-items: center;
-  padding-right: 2rem;
+
   position: fixed;
   top: 0;
-  right: 0;
-  left: 0;
+  width: 100%;
   z-index: 5;
 }
 .logo-outer {
@@ -20,7 +19,7 @@ nav {
   align-items: center;
 }
 .logo-outer img {
-  height: 100px;
+  height: 60px;
 }
 .logo-inner {
   font-family: "Cinzel", serif;
@@ -31,14 +30,14 @@ nav {
 }
 .logo-inner h1 {
   color: white;
-  font-size: 2.2rem;
+  font-size: 1.5rem;
   position: relative;
-  top: 25px;
+  top: 10px;
 }
-.logo-inner small {
+/* .logo-inner small {
   position: relative;
   top: 20px;
-}
+} */
 .search-nav {
   padding: 1rem;
   width: 700px;
@@ -52,6 +51,7 @@ nav {
 .nav-links {
   display: flex;
   gap: 2rem;
+  padding-right: 2rem;
 }
 
 .font-aw-icons {
@@ -65,18 +65,18 @@ nav {
     display: none;
   }
   nav {
-    height: 120px;
+    height: 80px;
   }
   .logo-outer img {
-    height: 70px;
+    height: 40px;
   }
   .logo-inner h1 {
-    font-size: 1.5rem;
+    font-size: 1rem;
     top: 15px;
   }
-  .logo-inner small {
+  /* .logo-inner small {
     display: none;
-  }
+  } */
   nav {
     justify-content: center;
   }

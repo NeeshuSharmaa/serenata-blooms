@@ -2,9 +2,11 @@
   margin: 0;
   box-sizing: border-box;
   --primary-blue: #75aadb;
+  --dark-blue: #5982a9;
   --primary-green: #c5e1a5;
   --primary-cream: #fff6e0;
-  --dark-green: #3c4619;
+  --secondary-green: #659132;
+  --dark-green: #537729;
   --cream-btn-shadow: 1px 2px 4px rgb(180, 179, 179);
 }
 
@@ -31,6 +33,24 @@ button:hover {
 .tag {
   font-size: 1rem;
   padding: 0.5rem 1rem;
+  position: absolute;
+  top: 15px;
+  left: -20px;
+  border-radius: 2px;
+}
+
+.Bestseller {
+  background-color: var(--primary-cream);
+}
+.New-Arrival {
+  background-color: var(--primary-green);
+}
+.Florist-Orignal {
+  background-color: pink;
+}
+.Fresh-Picked {
+  background-color: var(--secondary-green);
+  color: white;
 }
 
 @media screen and (max-width: 600px) {

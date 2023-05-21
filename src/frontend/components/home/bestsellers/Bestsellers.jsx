@@ -23,7 +23,7 @@ export default function Bestsellers() {
               </div>
               <button>See Details</button>
             </div>
-            <p className="tag tag-best">Bestseller</p>
+            <p className="tag Bestseller">Bestseller</p>
           </div>
         ))}
       </div>

@@ -5,16 +5,18 @@ import Navbar from "./frontend/components/navbar/Navbar";
 import Home from "./frontend/pages/home/Home";
 import Mockman from "mockman-js";
 import Footer from "./frontend/components/footer/Footer";
+import Store from "./frontend/pages/store/Store";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Home />
+      {/* <Navbar /> */}
       <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/store" element={<Store />} />
         <Route path="/mockman" element={<Mockman />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
