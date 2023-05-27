@@ -4,7 +4,7 @@
   padding-bottom: 1rem;
   position: sticky;
   top: 100px;
-  height: max-content;
+  height: 100vh;
 }
 .sort-price,
 .category-checkbox,
@@ -45,8 +45,8 @@
   flex-direction: column;
   gap: 1rem;
 }
-label {
-  font-size: 1;
+.filters-outer label {
+  font-size: 1rem;
   margin-left: 1rem;
 }
 

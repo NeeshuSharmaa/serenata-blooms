@@ -1,7 +1,6 @@
 .about {
-  /* margin-top: 150px; */
   display: flex;
-  margin-top: 100px;
+
   width: 100%;
   position: relative;
   border-bottom: 1px solid rgb(238, 237, 237);
@@ -15,13 +14,13 @@
   flex-direction: column;
   justify-content: center;
   gap: 2rem;
-  padding: 4rem 2rem;
+  padding: 2.5rem;
   /* background-color: rgb(246, 245, 245); */
   background-color: var(--primary-green);
   position: absolute;
   height: max-content;
   right: 30px;
-  top: 12%;
+  top: 15%;
   width: 60%;
   opacity: 0.9;
 }
@@ -55,11 +54,19 @@
 @media screen and (max-width: 768px) {
   .about {
     flex-wrap: wrap;
-    margin-top: 80px;
   }
   .about-content {
-    gap: 2rem;
-    width: 100%;
+    background-color: transparent;
+    left: 20%;
+    top: 30%;
+    opacity: 1;
+  }
+  .about-content h1 {
+    display: none;
+  }
+  .about-content p {
+    font-size: 0.8rem;
+    line-height: 1rem;
   }
   .about-img {
     width: 100%;
@@ -72,5 +79,7 @@
   .discover-btn {
     font-size: 1rem;
     align-self: center;
+    box-shadow: none;
+    padding: 1.5rem;
   }
 }

@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router";
 import "./About.css";
+import { Link } from "react-router-dom";
 
 export default function About() {
+  const navigate = useNavigate();
   return (
     <div className="about">
       <img className="about-img" src="/assets/images/smile.png" />
@@ -16,9 +19,11 @@ export default function About() {
           directly from flower farms, hand-arranged by our expert florists,
           lovingly presented, and safely delivered in perfect condition.
         </p>
-        <button className="discover-btn">
-          Discover a World of Opulent Blossoms <b>{">"}</b>
-        </button>
+        <Link to="/store">
+          <button className="discover-btn">
+            Discover a World of Opulent Blossoms <b>{">"}</b>
+          </button>
+        </Link>
       </div>
     </div>
   );

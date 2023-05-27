@@ -6,7 +6,9 @@
 }
 .bestsellers-list {
   display: flex;
-  overflow-x: scroll;
+  justify-content: center;
+  /* overflow-x: scroll; */
+  flex-wrap: wrap;
   gap: 2rem;
 }
 .best {
@@ -51,9 +53,9 @@
 
 @media screen and (max-width: 600px) {
   .best {
-    width: 80%;
+    width: 300px;
   }
   .best div > img {
-    width: 80%;
+    width: 300px;
   }
 }

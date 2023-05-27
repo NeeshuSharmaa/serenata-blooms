@@ -6,17 +6,20 @@ import {
   faHeart,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <nav>
-      <div className="logo-outer">
-        <img src="/assets/images/logo.png" />
-        <div className="logo-inner">
-          <h1>erenata Blooms</h1>
+      <Link to="/">
+        {" "}
+        <div className="logo-outer">
+          <img src="/assets/images/nav-logo.png" />
+          <div className="logo-inner">
+            <h1>erenata Blooms</h1>
+          </div>
         </div>
-      </div>
+      </Link>
 
       <div className="nav-links">
         <NavLink to="/store">

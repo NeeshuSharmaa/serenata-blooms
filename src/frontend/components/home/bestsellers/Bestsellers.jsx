@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useDataContext } from "../../../contexts/DataProvider";
 import "./Bestsellers.css";
 
@@ -21,7 +22,9 @@ export default function Bestsellers() {
                 <h3>{name}</h3>
                 <p>INR {price}</p>
               </div>
-              <button>See Details</button>
+              <Link to={`/product-details/${_id}`}>
+                <button>See Details</button>
+              </Link>
             </div>
             <p className="tag Bestseller">Bestseller</p>
           </div>

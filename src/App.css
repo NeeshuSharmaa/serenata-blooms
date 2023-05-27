@@ -1,8 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700;800;900&family=Quattrocento+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
 * {
   margin: 0;
   box-sizing: border-box;
-  --primary-blue: #75aadb;
+  --primary-blue: #579bda;
   --dark-blue: #5982a9;
+  --extra-dark-blue: #3d7bb5;
   --primary-green: #c5e1a5;
   --primary-cream: #fff6e0;
   --secondary-green: #659132;
@@ -14,6 +17,9 @@ a,
 button:hover {
   cursor: pointer;
 }
+a {
+  text-decoration: none;
+}
 .head-small p {
   padding-top: 1rem;
 }
@@ -24,6 +30,11 @@ button:hover {
 .para {
   font-size: 1.25rem;
   text-align: center;
+}
+.App {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
 }
 
 .img-div {

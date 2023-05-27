@@ -8,6 +8,8 @@ footer {
   font-size: 1.25rem;
   gap: 2rem;
   width: 100%;
+  /* position: absolute;
+  bottom: 0; */
 }
 .socials {
   display: flex;
