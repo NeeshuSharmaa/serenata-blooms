@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router";
+import { Route, Routes, useLocation } from "react-router";
 import "./App.css";
 
 import Navbar from "./frontend/components/navbar/Navbar";
@@ -12,6 +12,11 @@ import Cart from "./frontend/pages/cart/Cart";
 import PrivateRoute from "./frontend/components/PrivateRoute";
 
 function App() {
+  const { pathname } = useLocation();
+
+  const showFooter =
+    pathname === "/login" || pathname === "/signup" ? false : true;
+  console.log(showFooter);
   return (
     <div className="App">
       <Navbar />
@@ -30,7 +35,7 @@ function App() {
         />
         <Route path="/mockman" element={<Mockman />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
