@@ -11,6 +11,9 @@ export default function DataProvider({ children }) {
 
   const bestsellers = products.filter((prod) => prod.tag === "Bestseller");
 
+  const discountPercentage = (orignal, discount) =>
+    Math.round(((orignal - discount) / orignal) * 100);
+
   const getData = async () => {
     try {
       await axios
@@ -32,6 +35,7 @@ export default function DataProvider({ children }) {
     products,
     categories,
     bestsellers,
+    discountPercentage,
   };
 
   return <DataContext.Provider value={values}>{children}</DataContext.Provider>;
