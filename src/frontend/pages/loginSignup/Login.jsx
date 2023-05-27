@@ -3,7 +3,7 @@ import "./LoginSignup.css";
 import { useAuthContext } from "../../contexts/AuthProvider";
 
 export default function Login() {
-  const { loggedIn, setUserLoginData, loginHandler } = useAuthContext();
+  const { setUserLoginData, loginHandler } = useAuthContext();
 
   return (
     <div className="login-page">

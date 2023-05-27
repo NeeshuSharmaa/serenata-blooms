@@ -15,7 +15,7 @@ export default function Bestsellers() {
         {bestsellers?.map(({ _id, image, name, price }) => (
           <div className="best" key={_id}>
             <div className="img-div">
-              <img src={image} />
+              <img src={image} alt={name} />
             </div>
             <div className="best-info">
               <div>

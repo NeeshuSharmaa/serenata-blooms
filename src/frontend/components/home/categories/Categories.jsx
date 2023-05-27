@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import "./categories.css";
 import { useDataContext } from "../../../contexts/DataProvider";
 
@@ -19,7 +18,7 @@ export default function Categories() {
           <div key={_id} className="category-card">
             <div className="img-div">
               {" "}
-              <img src={image} />
+              <img src={image} alt="category-img" />
             </div>
             <h3>{categoryName}</h3>
           </div>

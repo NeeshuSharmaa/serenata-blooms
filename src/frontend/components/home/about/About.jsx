@@ -1,9 +1,7 @@
-import { useNavigate } from "react-router";
 import "./About.css";
 import { Link } from "react-router-dom";
 
 export default function About() {
-  const navigate = useNavigate();
   return (
     <div className="about">
       <img className="about-img" src="/assets/images/smile.png" />

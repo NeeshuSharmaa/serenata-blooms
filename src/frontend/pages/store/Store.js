@@ -1,8 +1,6 @@
 import Filters from "../../components/filters/Filters";
 import ProductCard from "../../components/product_card/ProductCard";
 import { useDataContext } from "../../contexts/DataProvider";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFilter } from "@fortawesome/free-solid-svg-icons";
 
 import "./Store.css";
 
