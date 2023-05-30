@@ -16,12 +16,12 @@ export default function Filters() {
     { label: "Birthday", name: "bday", id: "birthday" },
     { label: "Get Well", name: "get_well", id: "get well" },
   ];
-  const ratingRadios = [
-    { label: "4.2 & below 4.2", name: "rating", id: 4.2 },
-    { label: "4.5 & below 4.5", name: "rating", id: 4.5 },
-    { label: "4.8 & below 4.8", name: "rating", id: 4.8 },
-    { label: "5 & below 5", name: "rating", id: 4 },
-  ];
+  // const ratingRadios = [
+  //   { label: "4.2 & below 4.2", name: "rating", id: 4.2 },
+  //   { label: "4.5 & below 4.5", name: "rating", id: 4.5 },
+  //   { label: "4.8 & below 4.8", name: "rating", id: 4.8 },
+  //   { label: "5 & below 5", name: "rating", id: 4 },
+  // ];
 
   console.log("price range", filterState.priceRange);
 

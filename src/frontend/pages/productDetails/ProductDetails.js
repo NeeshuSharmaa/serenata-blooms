@@ -8,9 +8,9 @@ import "./ProductDetails.css";
 export default function ProductDetails() {
   const { products } = useDataContext();
   const { id } = useParams();
-  console.log("id", id);
+  console.log("id", typeof id);
 
-  const product = products?.find(({ id: prod_id }) => prod_id === Number(id));
+  const product = products?.find(({ id: prod_id }) => prod_id === id);
 
   const { discountPercentage } = useDataContext();
 
