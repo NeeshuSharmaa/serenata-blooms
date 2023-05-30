@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
 import "./LoginSignup.css";
 import { useAuthContext } from "../../contexts/AuthProvider";
+import { useEffect } from "react";
+import { useFilterContext } from "../../contexts/FilterDataProvider";
 
 export default function Login() {
   const { setUserLoginData, loginHandler } = useAuthContext();
+  const { dispatch } = useFilterContext();
+  useEffect(() => {
+    dispatch({ type: "CLEAR_ALL_HANDLER" });
+  }, []);
 
   return (
     <div className="login-page">

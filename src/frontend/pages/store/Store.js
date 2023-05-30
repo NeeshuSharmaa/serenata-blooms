@@ -25,17 +25,6 @@ export default function Store() {
       <div className="filter-n-products">
         <Filters />
         <div className="search-n-product">
-          <div className="search-div">
-            <input
-              value={filterState.search}
-              className="search"
-              type="text"
-              placeholder="Search via the specific flower name or the product name"
-              onChange={(e) =>
-                dispatch({ type: "SEARCH_HANDLER", payload: e.target.value })
-              }
-            />
-          </div>
           <div className="store-items">
             {filteredItems?.map((product) => (
               <ProductCard key={product._id} {...product} />

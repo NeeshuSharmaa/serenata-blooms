@@ -15,29 +15,6 @@
   gap: 1rem;
   align-items: center;
 }
-.search {
-  background-color: white;
-
-  width: 80%;
-  border-radius: 2rem;
-  padding: 1rem;
-  border: 1px solid grey;
-}
-.search:focus {
-  border: 1.5px solid var(--dark-green);
-  outline: none;
-}
-.search-div {
-  background-color: white;
-  padding: 2rem;
-  position: sticky;
-  top: 100px;
-  z-index: 4;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  opacity: 0.9;
-}
 
 .store-items {
   display: flex;
@@ -63,7 +40,6 @@
 }
 @media screen and (max-width: 600px) {
   .store {
-    margin-top: 80px;
   }
   .search-div {
     top: 80px;
