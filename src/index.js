@@ -6,6 +6,7 @@ import App from "./App";
 import { makeServer } from "./server";
 import DataProvider from "./frontend/contexts/DataProvider";
 import AuthProvider from "./frontend/contexts/AuthProvider";
+import FilterDataProvider from "./frontend/contexts/FilterDataProvider";
 
 // Call make Server
 makeServer();
@@ -16,7 +17,9 @@ root.render(
     <Router>
       <DataProvider>
         <AuthProvider>
-          <App />
+          <FilterDataProvider>
+            <App />
+          </FilterDataProvider>
         </AuthProvider>
       </DataProvider>
     </Router>
