@@ -1,4 +1,3 @@
-import { useDataContext } from "../../contexts/DataProvider";
 import { useFilterContext } from "../../contexts/FilterDataProvider";
 import "./Filters.css";
 
@@ -24,16 +23,16 @@ export default function Filters() {
     { label: "5 & below 5", name: "rating", id: 4 },
   ];
 
-  const FlowerCheckbox = [
-    { label: "Hydrangea", name: "hydrangea", id: "hydrangea" },
-    { label: "Rose", name: "rose", id: "rose" },
-    { label: "Lily", name: "lily", id: "lily" },
-    { label: "Carnation", name: "carnation", id: "carnation" },
-    { label: "Peony", name: "peony", id: "peony" },
-    { label: "Stock", name: "stock", id: "stock" },
-    { label: "Snapdragon", name: "snapdragon", id: "snapdragon" },
-    { label: "Kalanchoe", name: "kalanchoe", id: "kalanchoe" },
-  ];
+  // const FlowerCheckbox = [
+  //   { label: "Hydrangea", name: "hydrangea", id: "hydrangea" },
+  //   { label: "Rose", name: "rose", id: "rose" },
+  //   { label: "Lily", name: "lily", id: "lily" },
+  //   { label: "Carnation", name: "carnation", id: "carnation" },
+  //   { label: "Peony", name: "peony", id: "peony" },
+  //   { label: "Stock", name: "stock", id: "stock" },
+  //   { label: "Snapdragon", name: "snapdragon", id: "snapdragon" },
+  //   { label: "Kalanchoe", name: "kalanchoe", id: "kalanchoe" },
+  // ];
   // const colors = ["Purple", "Pink", "Green", "White", "Blue", "Yellow", "Red", "Orange"];
 
   return (
