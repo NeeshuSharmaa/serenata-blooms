@@ -10,6 +10,7 @@ import Login from "./frontend/pages/loginSignup/Login";
 import Signup from "./frontend/pages/loginSignup/Signup";
 import Cart from "./frontend/pages/cart/Cart";
 import PrivateRoute from "./frontend/components/PrivateRoute";
+import ProductDetails from "./frontend/pages/productDetails/ProductDetails";
 
 function App() {
   const { pathname } = useLocation();
@@ -33,9 +34,10 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route path="/product-details/:id" element={<ProductDetails />} />
         <Route path="/mockman" element={<Mockman />} />
       </Routes>
-      <Footer />
+      {showFooter && <Footer />}
     </div>
   );
 }

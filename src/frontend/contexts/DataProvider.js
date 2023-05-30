@@ -7,6 +7,7 @@ export const useDataContext = () => useContext(DataContext);
 
 export default function DataProvider({ children }) {
   const [products, setProducts] = useState([]);
+
   const [categories, setCategories] = useState([]);
 
   const bestsellers = products.filter((prod) => prod.tag === "Bestseller");
@@ -14,11 +15,35 @@ export default function DataProvider({ children }) {
   const discountPercentage = (orignal, discount) =>
     Math.round(((orignal - discount) / orignal) * 100);
 
+  // const maxPrice = products?.reduce(
+  //   (acc, curr) =>
+  //     curr.discount_price
+  //       ? curr.discountPrice > acc
+  //         ? curr.discountPrice
+  //         : acc
+  //       : curr.price > acc
+  //       ? curr.price
+  //       : acc,
+  //   0
+  // );
+  // const minPrice = products?.reduce(
+  //   (acc, curr) =>
+  //     curr.discount_price
+  //       ? curr.discountPrice < acc
+  //         ? curr.discountPrice
+  //         : acc
+  //       : curr.price < acc
+  //       ? curr.price
+  //       : acc,
+  //   Infinity
+  // );
+  // console.log("max price", maxPrice, "min price", minPrice);
+
   const getData = async () => {
     try {
-      await axios
-        .get("/api/products")
-        .then(({ data: { products } }) => setProducts(products));
+      await axios.get("/api/products").then(({ data: { products } }) => {
+        setProducts(products);
+      });
       await axios
         .get("/api/categories")
         .then(({ data: { categories } }) => setCategories(categories));
@@ -32,7 +57,10 @@ export default function DataProvider({ children }) {
   }, []);
 
   const values = {
+    // maxPrice,
+    // minPrice,
     products,
+
     categories,
     bestsellers,
     discountPercentage,

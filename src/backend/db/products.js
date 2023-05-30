@@ -203,7 +203,7 @@ export const products = [
     blooms: ["rose", "carnation"],
     price: 2348,
     image: "/assets/images/blush_crush.webp",
-    categoryName: "Cheer Up",
+    categoryName: "Sympathy",
     rating: 4.6,
   },
   {
@@ -252,7 +252,7 @@ export const products = [
     price: 9927,
     image: "/assets/images/graceful.webp",
     categoryName: "Get Well",
-    tag: "Florist-Orignal",
+    tag: "Florist-Original",
     rating: 4.6,
   },
   {

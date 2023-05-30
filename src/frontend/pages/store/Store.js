@@ -1,11 +1,15 @@
 import Filters from "../../components/filters/Filters";
 import ProductCard from "../../components/product_card/ProductCard";
-import { useDataContext } from "../../contexts/DataProvider";
+
+import { useFilterContext } from "../../contexts/FilterDataProvider";
 
 import "./Store.css";
 
 export default function Store() {
-  const { products } = useDataContext();
+  const { filterState, dispatch, getFilteredItems } = useFilterContext();
+
+  const filteredItems = getFilteredItems();
+  console.log(filteredItems);
 
   return (
     <div className="store">
@@ -23,13 +27,17 @@ export default function Store() {
         <div className="search-n-product">
           <div className="search-div">
             <input
+              value={filterState.search}
               className="search"
               type="text"
               placeholder="Search via the specific flower name or the product name"
+              onChange={(e) =>
+                dispatch({ type: "SEARCH_HANDLER", payload: e.target.value })
+              }
             />
           </div>
           <div className="store-items">
-            {products.map((product) => (
+            {filteredItems?.map((product) => (
               <ProductCard key={product._id} {...product} />
             ))}
           </div>

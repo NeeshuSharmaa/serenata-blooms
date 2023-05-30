@@ -10,54 +10,56 @@ export default function ProductDetails() {
   const { id } = useParams();
   console.log("id", id);
 
-  const product = products.find(({ _id }) => _id == id);
+  const product = products?.find(({ id: prod_id }) => prod_id === Number(id));
 
   const { discountPercentage } = useDataContext();
 
   return (
     <div className="product-details-page">
       <div style={{ position: "relative" }}>
-        <img src={product.image} />{" "}
-        {product.tag && <p className={`tag ${product.tag}`}>{product.tag}</p>}
+        <img src={product?.image} alt={product?.name} />{" "}
+        {product?.tag && (
+          <p className={`tag ${product?.tag}`}>{product?.tag}</p>
+        )}
       </div>
       <div className="prod-info">
-        <h1>{product.name}</h1>
+        <h1>{product?.name}</h1>
         <div className="quantative-info">
           <p className="rating">
-            <span>{product.rating}</span>{" "}
+            <span>{product?.rating}</span>{" "}
             <FontAwesomeIcon icon={faStar} className="star-icon" />
           </p>
-          {product.discount_price ? (
+          {product?.discount_price ? (
             <div className="price">
               {" "}
-              <span>₹ {product.discount_price}</span>
+              <span>₹ {product?.discount_price}</span>
               <span
                 style={{
                   color: "rgb(112, 111, 111)",
                   textDecoration: "line-through",
                 }}
               >
-                ₹ {product.price}
+                ₹ {product?.price}
               </span>
             </div>
           ) : (
-            <p>₹ {product.price}</p>
+            <p>₹ {product?.price}</p>
           )}
-          {product.discount_price && (
+          {product?.discount_price && (
             <p className="d-percentage">
-              {discountPercentage(product.price, product.discount_price)}% OFF
+              {discountPercentage(product?.price, product?.discount_price)}% OFF
             </p>
           )}
         </div>
         <p>
           <b>Blooms: </b>
-          {product.blooms.map((bloom) => (
+          {product?.blooms.map((bloom) => (
             <li>{bloom}</li>
           ))}
         </p>
         <p className="prod-description">
           <b>Description: </b>
-          {product.description}
+          {product?.description}
         </p>
         <div className="cart-wishlist-btns">
           <button className="cart-btn">Add to Cart</button>
