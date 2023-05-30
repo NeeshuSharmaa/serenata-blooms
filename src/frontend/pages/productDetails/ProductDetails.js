@@ -10,14 +10,14 @@ export default function ProductDetails() {
   const { id } = useParams();
   console.log("id", id);
 
-  const product = products?.find(({ id: prod_id }) => prod_id == id);
+  const product = products?.find(({ id: prod_id }) => prod_id === Number(id));
 
   const { discountPercentage } = useDataContext();
 
   return (
     <div className="product-details-page">
       <div style={{ position: "relative" }}>
-        <img src={product?.image} />{" "}
+        <img src={product?.image} alt={product?.name} />{" "}
         {product?.tag && (
           <p className={`tag ${product?.tag}`}>{product?.tag}</p>
         )}
