@@ -6,6 +6,7 @@ import { useDataContext } from "../../contexts/DataProvider";
 import { Link } from "react-router-dom";
 
 export default function ProductCard({
+  id,
   _id,
   name,
   price,
@@ -21,45 +22,45 @@ export default function ProductCard({
 
   return (
     <div className="product-card">
-      <Link to={`/product-details/${_id}`}>
+      <Link to={`/product-details/${id}`}>
         <div style={{ fontSize: "0" }}>
           <img src={image} alt={name} />{" "}
         </div>
-        {discount_price && (
-          <div className="save-tag">
-            Save {discountPercentage(price, discount_price)}%
-          </div>
-        )}
-
-        <div className="prod-info">
-          <div>
-            <h3>{name}</h3>
-            <FontAwesomeIcon
-              className={active ? "wishlist-icon active" : "wishlist-icon"}
-              icon={faHeart}
-              onClick={() => setActive(!active)}
-            />
-          </div>
-          {tag && <p className={`tag ${tag}`}>{tag}</p>}
-
-          {discount_price ? (
-            <div className="price">
-              {" "}
-              <span>₹ {discount_price}</span>
-              <span
-                style={{
-                  color: "rgb(112, 111, 111)",
-                  textDecoration: "line-through",
-                }}
-              >
-                ₹ {price}
-              </span>
-            </div>
-          ) : (
-            <p>₹ {price}</p>
-          )}
-        </div>
       </Link>
+      {discount_price && (
+        <div className="save-tag">
+          Save {discountPercentage(price, discount_price)}%
+        </div>
+      )}
+
+      <div className="prod-info">
+        <div>
+          <h3>{name}</h3>
+          <FontAwesomeIcon
+            className={active ? "wishlist-icon active" : "wishlist-icon"}
+            icon={faHeart}
+            onClick={() => setActive(!active)}
+          />
+        </div>
+        {tag && <p className={`tag ${tag}`}>{tag}</p>}
+
+        {discount_price ? (
+          <div className="price">
+            {" "}
+            <span>₹ {discount_price}</span>
+            <span
+              style={{
+                color: "rgb(112, 111, 111)",
+                textDecoration: "line-through",
+              }}
+            >
+              ₹ {price}
+            </span>
+          </div>
+        ) : (
+          <p>₹ {price}</p>
+        )}
+      </div>
     </div>
   );
 }
