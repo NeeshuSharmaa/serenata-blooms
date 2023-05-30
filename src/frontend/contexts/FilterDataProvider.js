@@ -18,7 +18,7 @@ export default function FilterDataProvider({ children }) {
     sort: "",
     priceRange: 14500,
     tag: "All",
-    rating: 0,
+    rating: 5,
   };
 
   const filterReducer = (state, { type, payload }) => {
@@ -57,6 +57,18 @@ export default function FilterDataProvider({ children }) {
       }
       case "RATING_HANDLER": {
         return { ...state, rating: payload };
+      }
+
+      case "CLEAR_ALL_HANDLER": {
+        return {
+          search: "",
+          category: [],
+          flowers: [],
+          sort: "",
+          priceRange: 14500,
+          tag: "All",
+          rating: 5,
+        };
       }
       default: {
         return { ...state };
