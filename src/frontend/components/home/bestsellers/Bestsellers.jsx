@@ -12,8 +12,8 @@ export default function Bestsellers() {
         <p className="para">The beloved blooms that everyone adores</p>
       </div>
       <div className="bestsellers-list">
-        {bestsellers?.map(({ _id, image, name, price }) => (
-          <div className="best" key={_id}>
+        {bestsellers?.map(({ id, image, name, price }) => (
+          <div className="best" key={id}>
             <div className="img-div">
               <img src={image} alt={name} />
             </div>
@@ -22,7 +22,7 @@ export default function Bestsellers() {
                 <h3>{name}</h3>
                 <p>INR {price}</p>
               </div>
-              <Link to={`/product-details/${_id}`}>
+              <Link to={`/product-details/${id}`}>
                 <button>See Details</button>
               </Link>
             </div>
