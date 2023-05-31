@@ -9,7 +9,7 @@ export default function Signup() {
   const { dispatch } = useFilterContext();
   useEffect(() => {
     dispatch({ type: "CLEAR_ALL_HANDLER" });
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="signup-page">

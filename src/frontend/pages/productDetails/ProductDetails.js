@@ -20,7 +20,7 @@ export default function ProductDetails() {
 
   useEffect(() => {
     dispatch({ type: "CLEAR_ALL_HANDLER" });
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="product-details-page">

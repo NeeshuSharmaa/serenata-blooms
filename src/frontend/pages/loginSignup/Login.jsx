@@ -9,7 +9,7 @@ export default function Login() {
   const { dispatch } = useFilterContext();
   useEffect(() => {
     dispatch({ type: "CLEAR_ALL_HANDLER" });
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="login-page">
