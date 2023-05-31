@@ -6,7 +6,7 @@ import { useFilterContext } from "../../contexts/FilterDataProvider";
 import "./Store.css";
 
 export default function Store() {
-  const { filterState, dispatch, getFilteredItems } = useFilterContext();
+  const { getFilteredItems } = useFilterContext();
 
   const filteredItems = getFilteredItems();
   console.log(filteredItems);
