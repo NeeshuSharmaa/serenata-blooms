@@ -1,6 +1,10 @@
 import "./ProductCard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import {
+  faHeart,
+  faCartShopping,
+  faStar,
+} from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { useDataContext } from "../../contexts/DataProvider";
 import { Link } from "react-router-dom";
@@ -27,13 +31,8 @@ export default function ProductCard({
           <img src={image} alt={name} />{" "}
         </div>
       </Link>
-      {discount_price && (
-        <div className="save-tag">
-          Save {discountPercentage(price, discount_price)}%
-        </div>
-      )}
 
-      <div className="prod-info">
+      <div className="product-info">
         <div>
           <h3>{name}</h3>
           <FontAwesomeIcon
@@ -56,11 +55,27 @@ export default function ProductCard({
             >
               ₹ {price}
             </span>
+            <span
+              className="discount-off"
+              style={{ fontWeight: "bold", color: "green" }}
+            >
+              ({discountPercentage(price, discount_price)}% OFF)
+            </span>
           </div>
         ) : (
           <p>₹ {price}</p>
         )}
       </div>
+      <div className="rating-on-card">
+        <span>{rating} </span>
+        <FontAwesomeIcon icon={faStar} className="star-icon-on-card" />
+      </div>
+
+      <button>
+        <span>Add to Cart</span>
+
+        <FontAwesomeIcon icon={faCartShopping} className="bag-icon" />
+      </button>
     </div>
   );
 }
