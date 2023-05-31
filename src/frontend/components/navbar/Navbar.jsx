@@ -30,10 +30,11 @@ export default function Navbar() {
         className="search"
         type="text"
         placeholder="Search via the specific flower name or the product name"
-        onChange={(e) =>
-          dispatch({ type: "SEARCH_HANDLER", payload: e.target.value })
-        }
-        onKeyDown={(e) => e.key === "Enter" && navigate("/store")}
+        onChange={(e) => {
+          dispatch({ type: "SEARCH_HANDLER", payload: e.target.value });
+          navigate("/store");
+        }}
+        // onKeyDown={(e) => e.key === "Enter" && navigate("/store")}
       />
 
       <div className="nav-links">
