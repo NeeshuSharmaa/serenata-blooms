@@ -16,12 +16,14 @@ export default function Filters() {
     { label: "Birthday", name: "bday", id: "birthday" },
     { label: "Get Well", name: "get_well", id: "get well" },
   ];
-  const ratingRadios = [
-    { label: "4.2 & below 4.2", name: "rating", id: 4.2 },
-    { label: "4.5 & below 4.5", name: "rating", id: 4.5 },
-    { label: "4.8 & below 4.8", name: "rating", id: 4.8 },
-    { label: "5 & below 5", name: "rating", id: 4 },
-  ];
+  // const ratingRadios = [
+  //   { label: "4.2 & below 4.2", name: "rating", id: 4.2 },
+  //   { label: "4.5 & below 4.5", name: "rating", id: 4.5 },
+  //   { label: "4.8 & below 4.8", name: "rating", id: 4.8 },
+  //   { label: "5 & below 5", name: "rating", id: 4 },
+  // ];
+
+  console.log("price range", filterState.priceRange);
 
   // const FlowerCheckbox = [
   //   { label: "Hydrangea", name: "hydrangea", id: "hydrangea" },
@@ -39,7 +41,7 @@ export default function Filters() {
     <aside className="filters-outer">
       <div className="filter-head">
         <h2>Filters</h2>
-        <p>Clear All</p>
+        <p onClick={() => dispatch({ type: "CLEAR_ALL_HANDLER" })}>Clear All</p>
       </div>
       {/* sort price */}
       <div className="filters-inner">
@@ -53,7 +55,7 @@ export default function Filters() {
                   type="radio"
                   name={name}
                   id={id}
-                  onClick={() =>
+                  onChange={() =>
                     dispatch({ type: "SORT_HANDLER", payload: id })
                   }
                 />
@@ -63,12 +65,25 @@ export default function Filters() {
           </div>
         </div>
         {/* price range */}
-        <div className="price-range">
+        <div className="price-range" style={{ position: "relative" }}>
           <h3>Price Range</h3>
+          <small
+            style={{
+              position: "absolute",
+              top: "-8%",
+              right: "0",
+              borderRadius: "0.2rem",
+              padding: "8px 10px",
+              backgroundColor: "#f1f5f9",
+            }}
+          >
+            ₹ 2000 - ₹ {filterState.priceRange}
+          </small>
           <div>
             <span>₹ 2000</span>
             <input
               defaultValue="14500"
+              value={filterState.priceRange}
               type="range"
               min="2000"
               max="14500"
@@ -150,9 +165,9 @@ export default function Filters() {
           </select>
         </div>
         {/* rating */}
-        <div className="rating-filter">
+        <div className="rating-filter" style={{ position: "relative" }}>
           <h3>Rating</h3>
-          <div>
+          {/* <div>
             {ratingRadios.map(({ label, name, id }) => (
               <div key={id}>
                 <input
@@ -167,6 +182,37 @@ export default function Filters() {
                 <label htmlFor={id}>{label}</label>
               </div>
             ))}
+          </div> */}
+          <small
+            style={{
+              position: "absolute",
+              top: "-8%",
+              right: "0",
+              borderRadius: "0.2rem",
+              padding: "8px 10px",
+              backgroundColor: "#f1f5f9",
+            }}
+          >
+            {filterState.rating} & below
+          </small>
+          <div>
+            <span>4 star</span>
+            <input
+              style={{ width: "60%" }}
+              defaultValue="5"
+              value={filterState.rating}
+              type="range"
+              min="4"
+              max="5"
+              step="0.2"
+              onChange={(e) =>
+                dispatch({
+                  type: "RATING_HANDLER",
+                  payload: e.target.value,
+                })
+              }
+            />
+            <span>5 star</span>
           </div>
         </div>
       </div>

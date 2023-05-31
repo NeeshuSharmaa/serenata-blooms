@@ -6,7 +6,7 @@
   /* flex-wrap: wrap; */
 }
 .product-details-page p,
-span {
+.product-details-page span {
   font-size: 1.25rem;
   line-height: 1.5;
 }
@@ -43,11 +43,6 @@ span {
 }
 .rating > span {
   font-size: 1.25rem;
-}
-.star-icon {
-  color: cornflowerblue;
-  width: 20px;
-  height: 20px;
 }
 
 .cart-wishlist-btns {

@@ -1,8 +1,12 @@
 import "./categories.css";
 import { useDataContext } from "../../../contexts/DataProvider";
+import { useFilterContext } from "../../../contexts/FilterDataProvider";
+import { useNavigate } from "react-router";
 
 export default function Categories() {
   const { categories } = useDataContext();
+  const { dispatch } = useFilterContext();
+  const navigate = useNavigate();
 
   return (
     <div className="categories-comp">
@@ -20,7 +24,18 @@ export default function Categories() {
               {" "}
               <img src={image} alt="category-img" />
             </div>
-            <h3>{categoryName}</h3>
+            <h3
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                dispatch({
+                  type: "CATEGORY_CHECKBOX_HANDLER",
+                  payload: { id: categoryName.toLowerCase(), checked: true },
+                });
+                navigate("/store");
+              }}
+            >
+              {categoryName}
+            </h3>
           </div>
         ))}
       </div>

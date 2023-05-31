@@ -2,17 +2,25 @@ import { useParams } from "react-router";
 import { useDataContext } from "../../contexts/DataProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { useEffect } from "react";
+import { useFilterContext } from "../../contexts/FilterDataProvider";
 
 import "./ProductDetails.css";
 
 export default function ProductDetails() {
   const { products } = useDataContext();
   const { id } = useParams();
-  console.log("id", id);
+  console.log("id", typeof id);
 
-  const product = products?.find(({ id: prod_id }) => prod_id === Number(id));
+  const product = products?.find(({ id: prod_id }) => prod_id === id);
 
   const { discountPercentage } = useDataContext();
+
+  const { dispatch } = useFilterContext();
+
+  useEffect(() => {
+    dispatch({ type: "CLEAR_ALL_HANDLER" });
+  }, [dispatch]);
 
   return (
     <div className="product-details-page">

@@ -6,9 +6,13 @@ import {
   faHeart,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useFilterContext } from "../../contexts/FilterDataProvider";
 
 export default function Navbar() {
+  const { filterState, dispatch } = useFilterContext();
+
+  const navigate = useNavigate();
   return (
     <nav>
       <Link to="/">
@@ -20,6 +24,18 @@ export default function Navbar() {
           </div>
         </div>
       </Link>
+
+      <input
+        value={filterState.search}
+        className="search"
+        type="text"
+        placeholder="Search via the specific flower name or the product name"
+        onChange={(e) => {
+          dispatch({ type: "SEARCH_HANDLER", payload: e.target.value });
+          navigate("/store");
+        }}
+        // onKeyDown={(e) => e.key === "Enter" && navigate("/store")}
+      />
 
       <div className="nav-links">
         <NavLink to="/store">
