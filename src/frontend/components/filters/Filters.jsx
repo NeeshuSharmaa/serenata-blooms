@@ -82,7 +82,6 @@ export default function Filters() {
           <div>
             <span>₹ 2000</span>
             <input
-              defaultValue="14500"
               value={filterState.priceRange}
               type="range"
               min="2000"
@@ -199,7 +198,6 @@ export default function Filters() {
             <span>4 star</span>
             <input
               style={{ width: "60%" }}
-              defaultValue="5"
               value={filterState.rating}
               type="range"
               min="4"
