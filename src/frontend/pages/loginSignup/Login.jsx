@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import "./LoginSignup.css";
-import { useAuthContext } from "../../contexts/AuthProvider";
 import { useEffect } from "react";
 import { useFilterContext } from "../../contexts/FilterDataProvider";
+import { useAuthContext } from "../../contexts/AuthProvider";
 
 export default function Login() {
   const { setUserLoginData, loginHandler } = useAuthContext();
