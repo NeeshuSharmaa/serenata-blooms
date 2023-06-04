@@ -70,8 +70,8 @@ export default function ProductDetails() {
           {product?.description}
         </p>
         <div className="cart-wishlist-btns">
-          <button className="cart-btn">Add to Cart</button>
-          <button className="wish-btn">Add to Wishlist</button>
+          <button className="primary-btn">Add to Cart</button>
+          <button className="secondary-btn">Add to Wishlist</button>
         </div>
       </div>
     </div>

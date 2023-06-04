@@ -51,24 +51,12 @@
   display: flex;
   gap: 2rem;
 }
-.cart-btn {
-  margin-top: 1rem;
-  padding: 1rem 2.5rem;
-  border-radius: 0.2rem;
-  border: 0;
-  background-color: var(--primary-green);
-}
+
 .cart-btn:hover {
   background-color: var(--secondary-green);
   color: white;
 }
-.wish-btn {
-  margin-top: 1rem;
-  padding: 1rem 2.5rem;
-  border-radius: 0.2rem;
-  border: 3px solid var(--primary-green);
-  background-color: white;
-}
+
 .wish-btn:hover {
   border: 3px solid var(--secondary-green);
 }

@@ -20,7 +20,11 @@ button:hover {
   cursor: pointer;
 }
 a {
+  color: black;
   text-decoration: none;
+}
+hr {
+  color: lightgray;
 }
 .head-small p {
   padding-top: 1rem;
@@ -51,9 +55,23 @@ a {
   left: -20px;
   border-radius: 2px;
 }
+.primary-btn {
+  margin-top: 1rem;
+  padding: 1rem 2.5rem;
+  border-radius: 0.2rem;
+  border: 0;
+  background-color: var(--primary-green);
+}
+.secondary-btn {
+  margin-top: 1rem;
+  padding: 1rem 2.5rem;
+  border-radius: 0.2rem;
+  border: 3px solid var(--primary-green);
+  background-color: white;
+}
 
 .Bestseller {
-  background-color: var(--primary-cream);
+  background-color: bisque;
 }
 .New-Arrival {
   background-color: var(--primary-green);
@@ -70,6 +88,18 @@ a {
   color: cornflowerblue;
   width: 20px;
   height: 20px;
+}
+
+.bag-icon,
+.arrow-right {
+  color: white;
+  width: 20px;
+  height: 20px;
+}
+.wishlist-icon {
+  height: 30px;
+  width: 25px;
+  color: rgb(225, 223, 223);
 }
 
 @media screen and (max-width: 600px) {

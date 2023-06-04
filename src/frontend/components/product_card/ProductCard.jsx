@@ -32,7 +32,6 @@ export default function ProductCard({
   const navigate = useNavigate();
 
   const inCart = currentUser?.cart?.find((prod) => prod.id === id);
-  console.log("current user", currentUser);
 
   return (
     <div className="product-card">
@@ -42,7 +41,7 @@ export default function ProductCard({
         </div>
       </Link>
       <div className="product-info">
-        <div>
+        <div className="prod-header">
           <Link to={`/product-details/${id}`}>
             <h3>{name}</h3>
           </Link>
@@ -57,8 +56,8 @@ export default function ProductCard({
         </div>
 
         {discount_price ? (
-          <div className="price">
-            <Link to={`/product-details/${id}`}>
+          <Link to={`/product-details/${id}`}>
+            <div className="price">
               {" "}
               <span>₹ {discount_price}</span>
               <span
@@ -75,8 +74,8 @@ export default function ProductCard({
               >
                 ({discountPercentage(price, discount_price)}% OFF)
               </span>
-            </Link>
-          </div>
+            </div>
+          </Link>
         ) : (
           <Link to={`/product-details/${id}`}>
             <p>₹ {price}</p>
