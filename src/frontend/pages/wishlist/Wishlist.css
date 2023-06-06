@@ -50,6 +50,8 @@
 
 .empty-wishlist {
   display: flex;
+  flex-wrap: wrap;
+  padding: 2rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
