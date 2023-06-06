@@ -160,12 +160,15 @@ export default function CartWishlistProvider({ children }) {
       {}
     );
     setWishlist((prev) => [...prev, prodToAdd]);
+    const updatedCart = cart.filter(({ id: ID }) => ID !== id);
+    setCart(updatedCart);
 
-    const userWithWishUpdate = {
+    const updatedUser = {
       ...currentUserData,
       wishlist: [...currentUserData.wishlist, prodToAdd],
+      cart: updatedCart,
     };
-    localStorage.setItem("user", JSON.stringify(userWithWishUpdate));
+    localStorage.setItem("user", JSON.stringify(updatedUser));
   };
   const allCartProdsToWishlistHandler = () => {
     const cartForWishlist = cart.map((prod) => ({ ...prod, qty: 1 }));
@@ -199,6 +202,7 @@ export default function CartWishlistProvider({ children }) {
     addToCartHandler,
     addToCart,
     addToWishlistHandler,
+    addFromCartToWishlist,
     deleteFromCartHandler,
     clearCartHandler,
     deleteWishlistHandler,
