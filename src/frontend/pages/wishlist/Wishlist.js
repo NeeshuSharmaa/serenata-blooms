@@ -5,6 +5,6 @@ export default function Wishlist() {
   const { dispatch } = useFilterContext();
   useEffect(() => {
     dispatch({ type: "CLEAR_ALL_HANDLER" });
-  }, []);
+  }, [dispatch]);
   return <div className="wishlist"></div>;
 }

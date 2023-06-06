@@ -11,6 +11,8 @@ import Signup from "./frontend/pages/loginSignup/Signup";
 import Cart from "./frontend/pages/cart/Cart";
 import PrivateRoute from "./frontend/components/PrivateRoute";
 import ProductDetails from "./frontend/pages/productDetails/ProductDetails";
+import Wishlist from "./frontend/pages/wishlist/Wishlist";
+import GuestRoute from "./frontend/components/Guest";
 
 function App() {
   const { pathname } = useLocation();
@@ -24,13 +26,35 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/store" element={<Store />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route
+          path="/login"
+          element={
+            <GuestRoute>
+              <Login />
+            </GuestRoute>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <GuestRoute>
+              <Signup />
+            </GuestRoute>
+          }
+        />
         <Route
           path="/cart"
           element={
             <PrivateRoute>
               <Cart />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/wishlist"
+          element={
+            <PrivateRoute>
+              <Wishlist />
             </PrivateRoute>
           }
         />

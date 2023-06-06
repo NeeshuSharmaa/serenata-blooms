@@ -7,10 +7,17 @@
   --dark-blue: #5982a9;
   --extra-dark-blue: #3d7bb5;
   --primary-green: #c5e1a5;
+  --dtp-green: #acd281;
+  --hover-green: #9fcd6a;
   --primary-cream: #fff6e0;
   --secondary-green: #659132;
   --dark-green: #537729;
   --cream-btn-shadow: 1px 2px 4px rgb(180, 179, 179);
+}
+.App {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
 }
 
 a,
@@ -18,7 +25,11 @@ button:hover {
   cursor: pointer;
 }
 a {
+  color: black;
   text-decoration: none;
+}
+hr {
+  color: lightgray;
 }
 .head-small p {
   padding-top: 1rem;
@@ -31,16 +42,13 @@ a {
   font-size: 1.25rem;
   text-align: center;
 }
-.App {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  min-height: 100vh;
-}
 
 .img-div {
   font-size: 0;
 }
-
+.green {
+  color: green;
+}
 .tag {
   font-size: 1rem;
   padding: 0.5rem 1rem;
@@ -49,9 +57,30 @@ a {
   left: -20px;
   border-radius: 2px;
 }
-
+.primary-btn {
+  font-size: 1rem;
+  margin-top: 1rem;
+  padding: 0.8rem 1.25rem;
+  border-radius: 0.2rem;
+  border: 0;
+  background-color: var(--dtp-green);
+}
+.secondary-btn {
+  font-size: 1rem;
+  margin-top: 1rem;
+  padding: 0.8rem 1.25rem;
+  border-radius: 0.2rem;
+  border: 3px solid var(--primary-green);
+  background-color: white;
+}
+.primary-btn > div,
+.secondary-btn > div {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
 .Bestseller {
-  background-color: var(--primary-cream);
+  background-color: bisque;
 }
 .New-Arrival {
   background-color: var(--primary-green);
@@ -68,6 +97,19 @@ a {
   color: cornflowerblue;
   width: 20px;
   height: 20px;
+}
+
+.bag-icon,
+.arrow-right,
+.heart {
+  color: white;
+  width: 20px;
+  height: 20px;
+}
+.wishlist-icon {
+  height: 30px;
+  width: 25px;
+  color: rgb(225, 223, 223);
 }
 
 @media screen and (max-width: 600px) {

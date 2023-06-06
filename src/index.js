@@ -7,6 +7,7 @@ import { makeServer } from "./server";
 import DataProvider from "./frontend/contexts/DataProvider";
 import AuthProvider from "./frontend/contexts/AuthProvider";
 import FilterDataProvider from "./frontend/contexts/FilterDataProvider";
+import CartWishlistProvider from "./frontend/contexts/CartWishlistProvider";
 
 // Call make Server
 makeServer();
@@ -18,7 +19,9 @@ root.render(
       <DataProvider>
         <AuthProvider>
           <FilterDataProvider>
-            <App />
+            <CartWishlistProvider>
+              <App />
+            </CartWishlistProvider>
           </FilterDataProvider>
         </AuthProvider>
       </DataProvider>

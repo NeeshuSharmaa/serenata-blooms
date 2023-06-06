@@ -1,0 +1,111 @@
+.horizontal-card {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  width: 650px;
+
+  height: 250px;
+  /* border-radius: 0.5rem; */
+  padding: 1rem 1rem 2.5rem 1rem;
+  /* box-shadow: var(--cream-btn-shadow); */
+  /* border-bottom: 1px solid gray; */
+}
+
+.hc-img {
+  width: 220px;
+  height: 220px;
+  /* border-radius: 0.5rem; */
+  align-self: center;
+}
+
+.horizontal-card > .prod-info > .price {
+  display: flex;
+  gap: 1rem;
+}
+.horizontal-card > .prod-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem 1rem 1rem 1rem;
+  align-self: center;
+}
+.xMark {
+  width: max-content;
+  position: absolute;
+  top: 5%;
+  right: 2%;
+  font-size: 1.25rem;
+  color: #cacaca;
+}
+.xMark:hover {
+  cursor: pointer;
+}
+
+.quantity {
+  padding-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.quantity > div {
+  display: flex;
+  align-items: center;
+  border-radius: 0.2rem;
+}
+.quant-btn {
+  border: 0;
+  font-size: 1rem;
+  padding: 0.5rem 0.8rem;
+  background-color: var(--primary-green);
+}
+.quant-btn:hover {
+  background-color: var(--dtp-green);
+}
+
+.quantity > div > .quantity-num {
+  font-size: 1rem;
+  background-color: rgb(245, 242, 242);
+  padding: 0.5rem 0.8rem;
+}
+.btns-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.btns-row-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem 1rem 1rem 1rem;
+  justify-content: center;
+}
+.btns-row-container > button {
+  padding: 0.8rem 1rem;
+  width: 70%;
+  border-radius: 0.2rem;
+}
+.remove-btn {
+  padding: 0.5rem;
+  background-color: whitesmoke;
+  border: 0;
+}
+.remove-btn:hover {
+  background-color: rgb(237, 236, 236);
+}
+.wishlist-btn {
+  padding: 0.5rem;
+  border: 0;
+  background-color: var(--primary-green);
+}
+.wishlist-btn:hover {
+  background-color: var(--dtp-green);
+}
+.disabled-btn {
+  border: 3px solid var(--primary-green);
+  color: var(--secondary-green);
+  cursor: default;
+}
+.disabled-btn:hover {
+  background-color: none;
+  cursor: not-allowed;
+}
