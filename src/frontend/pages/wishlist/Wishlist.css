@@ -16,11 +16,12 @@
   height: 280px;
 }
 .wishlist-prod {
+  position: relative;
   margin-left: 1rem;
   border: 1px solid lightGray;
 }
 
-.wishlist-prod > .prod-info {
+.wishlist-prod > a > .prod-info {
   margin: 0;
   padding: 1rem;
   display: flex;
@@ -45,4 +46,12 @@
 }
 .btns-in-row > hr {
   border: 1px solid black;
+}
+
+.empty-wishlist {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 }
