@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useDataContext } from "../../contexts/DataProvider";
 import "./HorizontalCard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,7 +16,8 @@ export default function HorizontalCard({
 }) {
   const { discountPercentage } = useDataContext();
   const {
-    addToWishlistHandler,
+    inWishlist,
+    addFromCartToWishlist,
     deleteFromCartHandler,
     addQuantityHandler,
     subQuantityHandler,
@@ -88,13 +88,11 @@ export default function HorizontalCard({
         <div className="btns-row-container">
           <span>Are you sure you want to move the item from cart?</span>
           <button
-            className="wishlist-btn"
-            onClick={() => {
-              addToWishlistHandler(id);
-              deleteFromCartHandler(id);
-            }}
+            className={inWishlist(id) ? "disabled-btn" : "wishlist-btn"}
+            onClick={() => addFromCartToWishlist(id)}
+            disabled={inWishlist(id)}
           >
-            Move to Wishlist
+            {inWishlist(id) ? "Already in Wishlist" : "Move to Wishlist"}
           </button>
           <button
             className="remove-btn"
