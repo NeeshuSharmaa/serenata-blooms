@@ -37,6 +37,7 @@ export default function CartWishlistProvider({ children }) {
     const product = products.find(({ id: prodId }) => prodId === id);
     try {
       if (currentUser.encodedToken) {
+        console.log("inside add to cart");
         const {
           data: { cart },
         } = await axios.post(
@@ -187,6 +188,10 @@ export default function CartWishlistProvider({ children }) {
     setDisableCartBtn((prev) => [...prev, id]);
     addToCartHandler(id);
   };
+  const moveToCart = (id) => {
+    addToCartHandler(id);
+    deleteWishlistHandler(id);
+  };
 
   const values = {
     cart,
@@ -201,6 +206,7 @@ export default function CartWishlistProvider({ children }) {
     setDisableCartBtn,
     addToCartHandler,
     addToCart,
+    moveToCart,
     addToWishlistHandler,
     addFromCartToWishlist,
     deleteFromCartHandler,
