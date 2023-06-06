@@ -13,6 +13,7 @@ import PrivateRoute from "./frontend/components/PrivateRoute";
 import ProductDetails from "./frontend/pages/productDetails/ProductDetails";
 import Wishlist from "./frontend/pages/wishlist/Wishlist";
 import GuestRoute from "./frontend/components/Guest";
+import NotFound from "./frontend/pages/notFound/NotFound";
 
 function App() {
   const { pathname } = useLocation();
@@ -60,6 +61,7 @@ function App() {
         />
         <Route path="/product-details/:id" element={<ProductDetails />} />
         <Route path="/mockman" element={<Mockman />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       {showFooter && <Footer />}
     </div>

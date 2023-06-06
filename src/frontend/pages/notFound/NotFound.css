@@ -1,0 +1,27 @@
+.not-found {
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.not-found > img {
+  width: 80%;
+  height: 70%;
+}
+.not-found > a {
+  position: absolute;
+  bottom: 30%;
+}
+.not-found > a > button {
+  padding: 1rem 1.25rem;
+  border-radius: 0.2rem;
+  background-color: whitesmoke;
+  font-size: 1rem;
+  border: 0;
+  box-shadow: var(--cream-btn-shadow);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
