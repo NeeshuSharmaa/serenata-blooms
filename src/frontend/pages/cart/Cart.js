@@ -21,7 +21,9 @@ export default function Cart() {
         </h2>
         <div className="clear-cart-atonce">
           <span onClick={clearCartHandler}>Remove All from Cart</span>
-          <span onClick={allCartProdsToWishlistHandler}>
+          <span
+          // onClick={allCartProdsToWishlistHandler}
+          >
             Move All to Wishlist
           </span>
         </div>

@@ -117,6 +117,7 @@ export default function CartWishlistProvider({ children }) {
           authorization: currentUser.encodedToken,
         },
       });
+      console.log("wishlist after delete", wishlist);
       setWishlist(wishlist);
 
       const userWithWishUpdate = { ...currentUserData, wishlist };
@@ -178,24 +179,26 @@ export default function CartWishlistProvider({ children }) {
     };
     localStorage.setItem("user", JSON.stringify(updatedUser));
   };
-  const allCartProdsToWishlistHandler = () => {
-    const cartForWishlist = cart.reduce(
-      (acc, curr) =>
-        wishlist.find(({ id }) => id === curr.id)
-          ? acc
-          : [...acc, { ...curr, qty: 1 }],
-      []
-    );
-    setWishlist((prev) => [...prev, ...cartForWishlist]);
-    setCart([]);
+  // const allCartProdsToWishlistHandler = () => {
+  //   const cartForWishlist = cart.reduce(
+  //     (acc, curr) =>
+  //       wishlist.find(({ id }) => id === curr.id)
+  //         ? acc
+  //         : [...acc, { ...curr, qty: 1 }],
+  //     []
+  //   );
 
-    const userWithWishUpdate = {
-      ...currentUserData,
-      wishlist: [...currentUserData.wishlist, ...cartForWishlist],
-      cart: [],
-    };
-    localStorage.setItem("user", JSON.stringify(userWithWishUpdate));
-  };
+  //   console.log("cart to wishlist", cartForWishlist);
+  //   setWishlist((prev) => [...prev, ...cartForWishlist]);
+  //   setCart([]);
+
+  //   const userWithWishUpdate = {
+  //     ...currentUserData,
+  //     wishlist: [...currentUserData.wishlist, ...cartForWishlist],
+  //     cart: [],
+  //   };
+  //   localStorage.setItem("user", JSON.stringify(userWithWishUpdate));
+  // };
 
   const addToCart = (id) => {
     setDisableCartBtn((prev) => [...prev, id]);
@@ -226,7 +229,7 @@ export default function CartWishlistProvider({ children }) {
     clearCartHandler,
     clearWishlistHandler,
     deleteWishlistHandler,
-    allCartProdsToWishlistHandler,
+    // allCartProdsToWishlistHandler,
     addQuantityHandler,
     subQuantityHandler,
   };
