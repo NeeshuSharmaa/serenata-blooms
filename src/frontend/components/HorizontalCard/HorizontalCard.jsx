@@ -2,12 +2,9 @@ import { Link } from "react-router-dom";
 import { useDataContext } from "../../contexts/DataProvider";
 import "./HorizontalCard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCartShopping,
-  faHeart,
-  faXmark,
-} from "@fortawesome/free-solid-svg-icons";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import { useCartWishlistContext } from "../../contexts/CartWishlistProvider";
 export default function HorizontalCard({
   id,
   name,
@@ -16,8 +13,15 @@ export default function HorizontalCard({
   image,
   tag,
   discount_price,
+  qty,
 }) {
   const { discountPercentage } = useDataContext();
+  const {
+    addToWishlistHandler,
+    deleteFromCartHandler,
+    addQuantityHandler,
+    subQuantityHandler,
+  } = useCartWishlistContext();
 
   const [moveActive, setMoveActive] = useState(false);
 
@@ -63,9 +67,19 @@ export default function HorizontalCard({
               <b>Quantity:</b>{" "}
             </span>
             <div>
-              <button className="quant-btn add-quant">+</button>
-              <span className="quantity-num">1</span>
-              <button className="quant-btn sub-quant">-</button>
+              <button
+                className="quant-btn sub-quant"
+                onClick={() => subQuantityHandler(id)}
+              >
+                -
+              </button>
+              <span className="quantity-num">{qty}</span>
+              <button
+                className="quant-btn add-quant"
+                onClick={() => addQuantityHandler(id)}
+              >
+                +
+              </button>
             </div>
           </div>
         </div>
@@ -73,8 +87,21 @@ export default function HorizontalCard({
       {moveActive && (
         <div className="btns-row-container">
           <span>Are you sure you want to move the item from cart?</span>
-          <button className="wishlist-btn">Move to Wishlist</button>
-          <button className="remove-btn">Remove from Cart</button>
+          <button
+            className="wishlist-btn"
+            onClick={() => {
+              addToWishlistHandler(id);
+              deleteFromCartHandler(id);
+            }}
+          >
+            Move to Wishlist
+          </button>
+          <button
+            className="remove-btn"
+            onClick={() => deleteFromCartHandler(id)}
+          >
+            Remove from Cart
+          </button>
         </div>
       )}
 

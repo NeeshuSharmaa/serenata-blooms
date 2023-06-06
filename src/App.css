@@ -14,6 +14,11 @@
   --dark-green: #537729;
   --cream-btn-shadow: 1px 2px 4px rgb(180, 179, 179);
 }
+.App {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
 
 a,
 button:hover {
@@ -37,16 +42,13 @@ hr {
   font-size: 1.25rem;
   text-align: center;
 }
-.App {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  min-height: 100vh;
-}
 
 .img-div {
   font-size: 0;
 }
-
+.green {
+  color: green;
+}
 .tag {
   font-size: 1rem;
   padding: 0.5rem 1rem;
@@ -56,20 +58,27 @@ hr {
   border-radius: 2px;
 }
 .primary-btn {
+  font-size: 1rem;
   margin-top: 1rem;
-  padding: 1rem 2.5rem;
+  padding: 0.8rem 1.25rem;
   border-radius: 0.2rem;
   border: 0;
-  background-color: var(--primary-green);
+  background-color: var(--dtp-green);
 }
 .secondary-btn {
+  font-size: 1rem;
   margin-top: 1rem;
-  padding: 1rem 2.5rem;
+  padding: 0.8rem 1.25rem;
   border-radius: 0.2rem;
   border: 3px solid var(--primary-green);
   background-color: white;
 }
-
+.primary-btn > div,
+.secondary-btn > div {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
 .Bestseller {
   background-color: bisque;
 }
@@ -91,7 +100,8 @@ hr {
 }
 
 .bag-icon,
-.arrow-right {
+.arrow-right,
+.heart {
   color: white;
   width: 20px;
   height: 20px;

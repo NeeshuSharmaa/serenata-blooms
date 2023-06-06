@@ -6,32 +6,30 @@ import {
   faStar,
   faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
 import { useDataContext } from "../../contexts/DataProvider";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuthContext } from "../../contexts/AuthProvider";
 import { useCartWishlistContext } from "../../contexts/CartWishlistProvider";
 
 export default function ProductCard({
   id,
-  _id,
   name,
   price,
   image,
   rating,
   tag,
-  blooms,
   discount_price,
 }) {
-  const [active, setActive] = useState(false);
-
   const { discountPercentage } = useDataContext();
-  const { currentUser } = useAuthContext();
-  const { addToCartHandler, addToWishlistHandler } = useCartWishlistContext();
+  const {
+    inCart,
+    inWishlist,
+    addToCart,
+    addToWishlistHandler,
+    disableCartBtn,
+    deleteWishlistHandler,
+  } = useCartWishlistContext();
 
   const navigate = useNavigate();
-
-  const inCart = currentUser?.cart?.find((prod) => prod.id === id);
 
   return (
     <div className="product-card">
@@ -46,12 +44,15 @@ export default function ProductCard({
             <h3>{name}</h3>
           </Link>
           <FontAwesomeIcon
-            className={active ? "wishlist-icon active" : "wishlist-icon"}
+            className={
+              inWishlist(id) ? "wishlist-icon active" : "wishlist-icon"
+            }
             icon={faHeart}
-            onClick={() => {
-              setActive(!active);
-              addToWishlistHandler(id);
-            }}
+            onClick={() =>
+              inWishlist(id)
+                ? deleteWishlistHandler(id)
+                : addToWishlistHandler(id)
+            }
           />
         </div>
 
@@ -90,9 +91,10 @@ export default function ProductCard({
       </div>
 
       <button
-        onClick={() => (inCart ? navigate("/cart") : addToCartHandler(id))}
+        disabled={disableCartBtn.includes(id)}
+        onClick={() => (inCart(id) ? navigate("/cart") : addToCart(id))}
       >
-        {inCart ? (
+        {inCart(id) ? (
           <>
             <span> Go to Cart</span>
             <FontAwesomeIcon icon={faArrowRight} className="arrow-right" />

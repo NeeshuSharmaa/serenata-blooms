@@ -1,77 +1,56 @@
 import { useEffect } from "react";
 import { useFilterContext } from "../../contexts/FilterDataProvider";
-import axios from "axios";
-import { useAuthContext } from "../../contexts/AuthProvider";
 import { useCartWishlistContext } from "../../contexts/CartWishlistProvider";
 import HorizontalCard from "../../components/HorizontalCard/HorizontalCard";
 import "./Cart.css";
+import EmptyCart from "./EmptyCart";
+import OrderSummary from "./OrderSummary";
+
 export default function Cart() {
   const { dispatch } = useFilterContext();
-  const { currentUser } = useAuthContext();
-  const { cart, setCart } = useCartWishlistContext();
+  const { cart, clearCartHandler, allCartProdsToWishlistHandler } =
+    useCartWishlistContext();
 
-  const getCartItems = async () => {
-    try {
-      const {
-        data: { cart },
-      } = await axios.get("/api/user/cart", {
-        headers: {
-          authorization: currentUser.encodedToken,
-        },
-      });
-      setCart(cart);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  useEffect(() => {
-    dispatch("CLEAR_ALL_HANDLER");
-    getCartItems();
-  }, []);
   const noOfItems = cart?.length;
-  return (
-    <div className="cart">
+
+  function CartItems() {
+    return (
       <div className="cart-items">
         <h2>
           <span>SHOPPING CART</span> <span>{noOfItems} items</span>
         </h2>
+        <div className="clear-cart-atonce">
+          <span onClick={clearCartHandler}>Remove All from Cart</span>
+          <span onClick={allCartProdsToWishlistHandler}>
+            Move All to Wishlist
+          </span>
+        </div>
+
         <hr />
         {cart.map((prod, index) => (
-          <>
+          <div key={prod.id}>
             <HorizontalCard {...prod} />
             {noOfItems - 1 !== index && <hr />}
-          </>
+          </div>
         ))}
       </div>
-      <div className="checkout-container">
-        <h2>Order Summary</h2>
-        <hr />
-        <div>
-          <h3>Price Details ({noOfItems} items)</h3>
+    );
+  }
 
-          <p>
-            <span>Total MRP</span>
-            <span>₹</span>
-          </p>
-          <p>
-            <span>Discount MRP</span>
-            <span>₹</span>{" "}
-          </p>
-          <p>
-            <span>Delivery Charges</span> <span>₹ 200</span>
-          </p>
-          <hr />
+  useEffect(() => {
+    dispatch("CLEAR_ALL_HANDLER");
+  }, []);
 
-          <p>
-            <span>Total Amount </span>
-            <span>₹</span>
-          </p>
-          <button className="primary-btn order-btn">
-            <b>PLACE ORDER</b>
-          </button>
-        </div>
-      </div>
+  return (
+    <div className="cart">
+      {cart.length ? (
+        <>
+          <CartItems />
+          <OrderSummary noOfItems={noOfItems} />
+        </>
+      ) : (
+        <EmptyCart />
+      )}
     </div>
   );
 }
