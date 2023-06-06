@@ -1,7 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import axios from "axios";
-import { useEffect } from "react";
 
 const AuthContext = createContext();
 
@@ -11,14 +10,6 @@ export default function AuthProvider({ children }) {
   const getUser = localStorage.getItem("user");
   const user = JSON.parse(getUser);
   console.log("user from local storage", user);
-
-  // const [currentUser, setCurrentUser] = useState({
-  //   encodedToken: "",
-  //   firstName: "",
-  //   lastName: "",
-  //   email: "",
-  //   address: [],
-  // });
 
   const [currentUser, setCurrentUser] = useState(user);
 

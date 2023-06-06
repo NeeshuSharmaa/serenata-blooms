@@ -39,7 +39,7 @@ export default function Cart() {
 
   useEffect(() => {
     dispatch("CLEAR_ALL_HANDLER");
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="cart">
