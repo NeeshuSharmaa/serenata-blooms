@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useAddressContext } from "../../contexts/AddressProvider";
 import Modal from "../../components/addressModal/Modal";
 
