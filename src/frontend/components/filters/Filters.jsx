@@ -24,6 +24,14 @@ export default function Filters() {
   // ];
 
   console.log("price range", filterState.priceRange);
+  const pRange =
+    filterState.priceRange === "2000"
+      ? "₹2000"
+      : `₹2000 - ₹${filterState.priceRange}`;
+  const rating =
+    filterState.rating === "4" ? 4 : `${filterState.rating} & below`;
+
+  console.log("price range", pRange);
 
   // const FlowerCheckbox = [
   //   { label: "Hydrangea", name: "hydrangea", id: "hydrangea" },
@@ -77,7 +85,7 @@ export default function Filters() {
               backgroundColor: "#f1f5f9",
             }}
           >
-            ₹ 2000 - ₹ {filterState.priceRange}
+            {pRange}
           </small>
           <div>
             <span>₹ 2000</span>
@@ -192,7 +200,7 @@ export default function Filters() {
               backgroundColor: "#f1f5f9",
             }}
           >
-            {filterState.rating} & below
+            {rating}
           </small>
           <div>
             <span>4 star</span>
