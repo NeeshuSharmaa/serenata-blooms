@@ -1,8 +1,14 @@
+import { useLocation, useNavigate } from "react-router";
 import { useCartWishlistContext } from "../../contexts/CartWishlistProvider";
 
 export default function OrderSummary({ noOfItems }) {
   const { totalPrice, totalDiscount, deliveryCharges, paymentAmount } =
     useCartWishlistContext();
+
+  const { checkoutHandler } = useCartWishlistContext();
+
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   return (
     <div className="checkout-container">
@@ -28,8 +34,13 @@ export default function OrderSummary({ noOfItems }) {
           <span>Total Amount </span>
           <span>₹ {paymentAmount}</span>
         </p>
-        <button className="primary-btn order-btn">
-          <b>PLACE ORDER</b>
+        <button
+          className="primary-btn order-btn"
+          onClick={
+            pathname === "/cart" ? () => navigate("/checkout") : checkoutHandler
+          }
+        >
+          <b>{pathname === "/cart" ? "CHECKOUT" : "PLACE ORDER"}</b>
         </button>
       </div>
     </div>

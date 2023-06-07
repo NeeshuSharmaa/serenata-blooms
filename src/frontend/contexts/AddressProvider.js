@@ -28,6 +28,8 @@ export default function AddressProvider({ children }) {
     address: "",
   });
 
+  const [checkoutAddress, setCheckoutAddress] = useState(defaultAddress.id);
+
   const [showModal, setShowModal] = useState(false);
   const [modalTitle, setModalTitle] = useState("Add New Address");
 
@@ -62,6 +64,14 @@ export default function AddressProvider({ children }) {
         );
 
         setShowModal(false);
+        setAddressInputs({
+          receiverName: "",
+          mobile: "",
+          pincode: "",
+          state: "",
+          city: "",
+          address: "",
+        });
         toast.success("Address Updated successfully!", {
           className: "toast-message",
         });
@@ -75,11 +85,18 @@ export default function AddressProvider({ children }) {
 
       setAddresses((prevAddr) => [...prevAddr, addrToAdd]);
       setShowModal(false);
+      setAddressInputs({
+        receiverName: "",
+        mobile: "",
+        pincode: "",
+        state: "",
+        city: "",
+        address: "",
+      });
       toast.success("New Address Added!", {
         className: "toast-message",
       });
     } else {
-      console.error("Fill all the required fields");
       toast.warning("Fill all the required fields!", {
         className: "toast-message",
       });
@@ -113,6 +130,8 @@ export default function AddressProvider({ children }) {
     saveAddress,
     removeAddress,
     editAddress,
+    checkoutAddress,
+    setCheckoutAddress,
   };
   console.log("address inputs", addressInputs);
   return (

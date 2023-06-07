@@ -5,6 +5,7 @@ import { useDataContext } from "./DataProvider";
 import { useAuthContext } from "./AuthProvider";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 
 const CartWishlistContext = createContext();
 
@@ -17,6 +18,7 @@ export default function CartWishlistProvider({ children }) {
   const [cart, setCart] = useState(currentUser?.cart || []);
   const [wishlist, setWishlist] = useState(currentUser?.wishlist || []);
   const [disableCartBtn, setDisableCartBtn] = useState([]);
+  const navigate = useNavigate();
 
   const totalPrice = cart?.reduce((sum, prod) => sum + prod.price, 0);
   const discountedPrice = cart?.reduce(
@@ -250,6 +252,13 @@ export default function CartWishlistProvider({ children }) {
     deleteWishlistHandler(id);
   };
 
+  function checkoutHandler() {
+    navigate("/");
+    toast.success("Congratulations, Order placed!", {
+      className: "toast-message",
+    });
+  }
+
   const values = {
     cart,
     inCart,
@@ -273,6 +282,7 @@ export default function CartWishlistProvider({ children }) {
     // allCartProdsToWishlistHandler,
     addQuantityHandler,
     subQuantityHandler,
+    checkoutHandler,
   };
   return (
     <CartWishlistContext.Provider value={values}>

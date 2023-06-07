@@ -41,12 +41,14 @@ export default function DataProvider({ children }) {
 
   const getData = async () => {
     try {
-      await axios.get("/api/products").then(({ data: { products } }) => {
-        setProducts(products);
-      });
-      await axios
-        .get("/api/categories")
-        .then(({ data: { categories } }) => setCategories(categories));
+      const {
+        data: { products },
+      } = await axios.get("/api/products");
+      setProducts(products);
+      const {
+        data: { categories },
+      } = await axios.get("/api/categories");
+      setCategories(categories);
     } catch (e) {
       console.error("error from fetching data", e.message);
     }

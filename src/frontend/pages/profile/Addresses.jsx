@@ -1,8 +1,8 @@
 import { useAddressContext } from "../../contexts/AddressProvider";
-import Modal from "../../components/addressModal/Modal";
+import AddressCard from "./AddressCard";
 
 export default function Addresses() {
-  const { addresses, removeAddress, editAddress } = useAddressContext();
+  const { addresses } = useAddressContext();
 
   const { setShowModal } = useAddressContext();
 
@@ -11,7 +11,9 @@ export default function Addresses() {
       <div className="addresses-header">
         <h2>YOUR ADDRESSES</h2>
 
-        <button onClick={() => setShowModal(true)}>+ Add new address</button>
+        <button className="address-btn" onClick={() => setShowModal(true)}>
+          + Add new address
+        </button>
       </div>
       {!addresses.length && (
         <div className="no-address">
@@ -21,31 +23,11 @@ export default function Addresses() {
       )}
       {!!addresses.length && (
         <div className="addresses-list">
-          {addresses.map(
-            ({ id, receiverName, mobile, pincode, state, city, address }) => (
-              <div key={id} className="address-container">
-                <div className="address-details">
-                  <h3>{receiverName}</h3>
-                  <div className="address">
-                    <p>{address}</p>
-                    <p>
-                      {city} - {pincode}
-                    </p>
-                    <p>{state}</p>
-                  </div>
-                  <p>Mobile: {mobile}</p>
-                </div>
-                <div className="btns-in-row">
-                  <span onClick={() => editAddress(id)}>Edit</span>
-                  <span>|</span>
-                  <span onClick={() => removeAddress(id)}>Remove</span>
-                </div>
-              </div>
-            )
-          )}
+          {addresses.map((addr) => (
+            <AddressCard {...addr} />
+          ))}
         </div>
       )}
-      <Modal />
     </div>
   );
 }

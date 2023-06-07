@@ -17,6 +17,8 @@ import NotFound from "./frontend/pages/notFound/NotFound";
 import Profile from "./frontend/pages/profile/Profile";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Checkout from "./frontend/pages/checkout/Checkout";
+import Modal from "./frontend/components/addressModal/Modal";
 
 function App() {
   const { pathname } = useLocation();
@@ -65,6 +67,14 @@ function App() {
           }
         />
         <Route
+          path="/checkout"
+          element={
+            <PrivateRoute>
+              <Checkout />
+            </PrivateRoute>
+          }
+        />
+        <Route
           path="/wishlist"
           element={
             <PrivateRoute>
@@ -77,6 +87,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
       {showFooter && <Footer />}
+      <Modal />
       <ToastContainer
         position="top-right"
         autoClose={2000}

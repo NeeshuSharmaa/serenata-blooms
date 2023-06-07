@@ -97,13 +97,6 @@
   align-items: center;
   border-bottom: 1px solid lightgray;
 }
-.addresses-header > button {
-  border: 1px solid Gray;
-  background-color: white;
-  padding: 0.8rem 1.5rem;
-  color: var(--dark-blue);
-  font-weight: bold;
-}
 
 .addresses-list {
   display: flex;
@@ -115,6 +108,7 @@
   flex-direction: column;
   width: 90%;
   box-shadow: var(--cream-btn-shadow);
+  background-color: white;
 }
 .address-details {
   padding: 2rem;
