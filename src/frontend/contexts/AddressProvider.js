@@ -28,6 +28,7 @@ export default function AddressProvider({ children }) {
   });
 
   const [showModal, setShowModal] = useState(false);
+  const [modalTitle, setModalTitle] = useState("Add New Address");
 
   function cancelAddress() {
     setAddressInputs({
@@ -41,7 +42,7 @@ export default function AddressProvider({ children }) {
     setShowModal(false);
   }
   function fillWithDummyAddress() {
-    setAddressInputs(defaultAddress);
+    setAddressInputs({ ...defaultAddress, id: null });
   }
   function saveAddress() {
     if (
@@ -51,10 +52,23 @@ export default function AddressProvider({ children }) {
       addressInputs.state &&
       addressInputs.address
     ) {
+      console.log("heelo", addressInputs);
+      if (addressInputs.id) {
+        setAddresses((prevAddr) =>
+          prevAddr.map((addr) =>
+            addr.id === addressInputs.id ? addressInputs : addr
+          )
+        );
+
+        setShowModal(false);
+        return;
+      }
+
       const addrToAdd = {
-        id: uuid(),
         ...addressInputs,
+        id: uuid(),
       };
+
       setAddresses((prevAddr) => [...prevAddr, addrToAdd]);
       setShowModal(false);
     } else {
@@ -65,16 +79,27 @@ export default function AddressProvider({ children }) {
     setAddresses((addr) => addr.filter(({ id: ID }) => ID !== id));
   }
 
+  function editAddress(id) {
+    const addrToEdit = addresses.find((addr) => addr.id === id);
+
+    setAddressInputs(addrToEdit);
+    setModalTitle("Edit Address");
+    setShowModal(true);
+  }
+
   const values = {
     defaultAddress,
+    addressInputs,
     addresses,
     showModal,
+    modalTitle,
     setShowModal,
     setAddressInputs,
     cancelAddress,
     fillWithDummyAddress,
     saveAddress,
     removeAddress,
+    editAddress,
   };
   console.log("address inputs", addressInputs);
   return (

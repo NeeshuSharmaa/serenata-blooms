@@ -1,9 +1,16 @@
 import { useAddressContext } from "../../contexts/AddressProvider";
 import "./Modal.css";
 
-export default function Modal({ showModal }) {
-  const { setAddressInputs, cancelAddress, fillWithDummyAddress, saveAddress } =
-    useAddressContext();
+export default function Modal() {
+  const {
+    showModal,
+    modalTitle,
+    addressInputs,
+    setAddressInputs,
+    cancelAddress,
+    fillWithDummyAddress,
+    saveAddress,
+  } = useAddressContext();
 
   if (!showModal) {
     return null;
@@ -12,12 +19,12 @@ export default function Modal({ showModal }) {
     <div className="modal">
       <div className="model-content">
         <div className="modal-header">
-          <h3>Add New Address</h3>
+          <h3>{modalTitle}</h3>
         </div>
         <div className="modal-body">
           <div>
             <input
-              value={setAddressInputs.receiverName}
+              value={addressInputs.receiverName}
               type="text"
               placeholder="Name"
               onChange={(e) =>
@@ -29,7 +36,7 @@ export default function Modal({ showModal }) {
               required
             />
             <input
-              value={setAddressInputs.mobile}
+              value={addressInputs.mobile}
               type="number"
               placeholder="Mobile Number"
               onChange={(e) =>
@@ -44,7 +51,7 @@ export default function Modal({ showModal }) {
 
           <div>
             <input
-              value={setAddressInputs.pincode}
+              value={addressInputs.pincode}
               type="number"
               placeholder="Pincode"
               onChange={(e) =>
@@ -56,7 +63,7 @@ export default function Modal({ showModal }) {
               required
             />
             <input
-              value={setAddressInputs.state}
+              value={addressInputs.state}
               type="text"
               placeholder="State"
               onChange={(e) =>
@@ -66,7 +73,7 @@ export default function Modal({ showModal }) {
             />
           </div>
           <input
-            value={setAddressInputs.city}
+            value={addressInputs.city}
             type="text"
             placeholder="City / District"
             onChange={(e) =>
@@ -75,7 +82,7 @@ export default function Modal({ showModal }) {
             required
           />
           <input
-            value={setAddressInputs.address}
+            value={addressInputs.address}
             type="text"
             placeholder="House No / Building / Street / Area"
             onChange={(e) =>

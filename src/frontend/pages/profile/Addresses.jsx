@@ -2,7 +2,7 @@ import { useAddressContext } from "../../contexts/AddressProvider";
 import Modal from "../../components/addressModal/Modal";
 
 export default function Addresses() {
-  const { addresses, removeAddress } = useAddressContext();
+  const { addresses, removeAddress, editAddress } = useAddressContext();
 
   const { showModal, setShowModal } = useAddressContext();
 
@@ -36,7 +36,7 @@ export default function Addresses() {
                   <p>Mobile: {mobile}</p>
                 </div>
                 <div className="btns-in-row">
-                  <span>Edit</span>
+                  <span onClick={() => editAddress(id)}>Edit</span>
                   <span>|</span>
                   <span onClick={() => removeAddress(id)}>Remove</span>
                 </div>
@@ -45,7 +45,7 @@ export default function Addresses() {
           )}
         </div>
       )}
-      <Modal showModal={showModal} />
+      <Modal />
     </div>
   );
 }
