@@ -13,6 +13,10 @@ import PrivateRoute from "./frontend/components/PrivateRoute";
 import ProductDetails from "./frontend/pages/productDetails/ProductDetails";
 import Wishlist from "./frontend/pages/wishlist/Wishlist";
 import GuestRoute from "./frontend/components/Guest";
+import NotFound from "./frontend/pages/notFound/NotFound";
+import Profile from "./frontend/pages/profile/Profile";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const { pathname } = useLocation();
@@ -26,6 +30,16 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/store" element={<Store />} />
+
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          }
+        />
+
         <Route
           path="/login"
           element={
@@ -60,8 +74,21 @@ function App() {
         />
         <Route path="/product-details/:id" element={<ProductDetails />} />
         <Route path="/mockman" element={<Mockman />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       {showFooter && <Footer />}
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const AuthContext = createContext();
 
@@ -26,6 +27,7 @@ export default function AuthProvider({ children }) {
     lastName: "",
     email: "",
     password: "",
+    confirmPassword: "",
   });
   const [userLoginData, setUserLoginData] = useState({
     email: "adarshbalika@gmail.com",
@@ -33,25 +35,49 @@ export default function AuthProvider({ children }) {
   });
 
   const signupHandler = async () => {
-    try {
-      const {
-        data: { createdUser, encodedToken },
-      } = await axios.post("/api/auth/signup", userSignupData);
-      const user = {
-        encodedToken: encodedToken,
-        firstName: createdUser.firstName.trim(),
-        lastName: createdUser.firstName.trim(),
-        email: createdUser.email.trim(),
-      };
-      setCurrentUser(user);
-      localStorage.setItem("token", encodedToken);
-      localStorage.setItem("user", JSON.stringify(user));
-      setLoggedIn(true);
-      fromLocation === undefined
-        ? navigate("/")
-        : navigate(location.state?.from?.pathname);
-    } catch (e) {
-      console.log(e.response.data.errors[0]);
+    if (
+      userSignupData.firstName &&
+      userSignupData.lastName &&
+      userSignupData.email &&
+      userSignupData.password &&
+      userSignupData.confirmPassword
+    ) {
+      if (userSignupData.password === userSignupData.confirmPassword) {
+        try {
+          const {
+            data: { createdUser, encodedToken },
+          } = await axios.post("/api/auth/signup", userSignupData);
+          const user = {
+            encodedToken: encodedToken,
+            firstName: createdUser.firstName.trim(),
+            lastName: createdUser.firstName.trim(),
+            email: createdUser.email.trim(),
+          };
+          setCurrentUser(user);
+          localStorage.setItem("token", encodedToken);
+          localStorage.setItem("user", JSON.stringify(user));
+          setLoggedIn(true);
+          toast.success("You're signedUp!", {
+            className: "toast-message",
+          });
+          fromLocation === undefined
+            ? navigate("/")
+            : navigate(location.state?.from?.pathname);
+        } catch (e) {
+          console.log(e.response.data.errors[0]);
+          toast.error(e.response.data.errors[0], {
+            className: "toast-message",
+          });
+        }
+      } else {
+        toast.warning("Password and confirm password doesn't match!!", {
+          className: "toast-message",
+        });
+      }
+    } else {
+      toast.warning("Fill all the input requirements!!", {
+        className: "toast-message",
+      });
     }
   };
 
@@ -73,12 +99,18 @@ export default function AuthProvider({ children }) {
         localStorage.setItem("token", encodedToken);
         localStorage.setItem("user", JSON.stringify(user));
         setLoggedIn(true);
+        toast.success("You're logged In", {
+          className: "toast-message",
+        });
         fromLocation === undefined
           ? navigate("/")
           : navigate(location.state?.from?.pathname);
       }
     } catch (e) {
       console.log(e.response.data.errors[0]);
+      toast.error(e.response.data.errors[0], {
+        className: "toast-message",
+      });
     }
   };
   const logoutHandler = () => {
@@ -86,6 +118,9 @@ export default function AuthProvider({ children }) {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     setLoggedIn(false);
+    toast.success("You're logged out!", {
+      className: "toast-message",
+    });
   };
 
   console.log("current user", currentUser);

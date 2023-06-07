@@ -31,13 +31,25 @@
 }
 
 .login-main > input,
-.signup-main > input {
-  padding: 1.5rem;
+.signup-main > input,
+.signup-main > .name-inputs > input,
+.signup-main > .password-inputs > input {
+  padding: 1.25rem;
   height: 30px;
   border: 1px solid lightgrey;
   border-radius: 0.2rem;
   font-size: 1rem;
 }
+.signup-main > .name-inputs,
+.signup-main > .password-inputs {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.signup-main > .password-inputs > input {
+  width: 100%;
+}
+
 .login-main input:focus,
 .signup-main input:focus {
   outline: 2px solid var(--dark-blue);
@@ -84,4 +96,15 @@
   top: -12px;
   padding: 0.1rem;
   background-color: white;
+}
+
+.eye-btn {
+  padding: 0.5rem;
+  background-color: aliceblue;
+  border: 1px solid lightGrey;
+}
+.eye,
+.eye-slash {
+  width: 20px;
+  height: 15px;
 }

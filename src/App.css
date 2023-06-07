@@ -31,6 +31,12 @@ a {
 hr {
   color: lightgray;
 }
+
+.toast-message {
+  top: 3.5rem;
+  opacity: 0.9;
+}
+
 .head-small p {
   padding-top: 1rem;
 }
@@ -112,6 +118,20 @@ hr {
   color: rgb(225, 223, 223);
 }
 
+.btns-in-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(243, 240, 240);
+  border-top: 1px solid lightGray;
+}
+.btns-in-row > span {
+  padding: 1rem;
+}
+.btns-in-row > span:hover {
+  cursor: pointer;
+}
 @media screen and (max-width: 600px) {
   .heading {
     font-size: 2rem;
