@@ -6,7 +6,7 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 export default function NotFound() {
   return (
     <div className="not-found">
-      <img src="/assets/images/404.png" alt="404-image" />
+      <img src="/assets/images/404.png" alt="404" />
       <Link to="/">
         <button>
           <FontAwesomeIcon icon={faArrowLeft} />
