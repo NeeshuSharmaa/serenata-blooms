@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const AuthContext = createContext();
 
@@ -47,11 +48,17 @@ export default function AuthProvider({ children }) {
       localStorage.setItem("token", encodedToken);
       localStorage.setItem("user", JSON.stringify(user));
       setLoggedIn(true);
+      toast.success("You're signedUp!", {
+        className: "toast-message",
+      });
       fromLocation === undefined
         ? navigate("/")
         : navigate(location.state?.from?.pathname);
     } catch (e) {
       console.log(e.response.data.errors[0]);
+      toast.error(e.response.data.errors[0], {
+        className: "toast-message",
+      });
     }
   };
 
@@ -73,12 +80,18 @@ export default function AuthProvider({ children }) {
         localStorage.setItem("token", encodedToken);
         localStorage.setItem("user", JSON.stringify(user));
         setLoggedIn(true);
+        toast.success("You're logged In", {
+          className: "toast-message",
+        });
         fromLocation === undefined
           ? navigate("/")
           : navigate(location.state?.from?.pathname);
       }
     } catch (e) {
       console.log(e.response.data.errors[0]);
+      toast.error(e.response.data.errors[0], {
+        className: "toast-message",
+      });
     }
   };
   const logoutHandler = () => {
@@ -86,6 +99,9 @@ export default function AuthProvider({ children }) {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     setLoggedIn(false);
+    toast.success("You're logged out!", {
+      className: "toast-message",
+    });
   };
 
   console.log("current user", currentUser);

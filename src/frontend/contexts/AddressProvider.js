@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { toast } from "react-toastify";
 import { v4 as uuid } from "uuid";
 
 const AddressContext = createContext();
@@ -61,6 +62,9 @@ export default function AddressProvider({ children }) {
         );
 
         setShowModal(false);
+        toast.success("Address Updated successfully!", {
+          className: "toast-message",
+        });
         return;
       }
 
@@ -71,12 +75,21 @@ export default function AddressProvider({ children }) {
 
       setAddresses((prevAddr) => [...prevAddr, addrToAdd]);
       setShowModal(false);
+      toast.success("New Address Added!", {
+        className: "toast-message",
+      });
     } else {
       console.error("Fill all the required fields");
+      toast.warning("Fill all the required fields!", {
+        className: "toast-message",
+      });
     }
   }
   function removeAddress(id) {
     setAddresses((addr) => addr.filter(({ id: ID }) => ID !== id));
+    toast.success("Addressed Removed!", {
+      className: "toast-message",
+    });
   }
 
   function editAddress(id) {

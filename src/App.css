@@ -31,6 +31,12 @@ a {
 hr {
   color: lightgray;
 }
+
+.toast-message {
+  top: 3.5rem;
+  opacity: 0.9;
+}
+
 .head-small p {
   padding-top: 1rem;
 }
