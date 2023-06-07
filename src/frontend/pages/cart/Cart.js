@@ -8,8 +8,7 @@ import OrderSummary from "./OrderSummary";
 
 export default function Cart() {
   const { dispatch } = useFilterContext();
-  const { cart, clearCartHandler, allCartProdsToWishlistHandler } =
-    useCartWishlistContext();
+  const { cart, clearCartHandler } = useCartWishlistContext();
 
   const noOfItems = cart?.length;
 
