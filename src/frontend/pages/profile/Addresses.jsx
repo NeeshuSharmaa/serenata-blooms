@@ -4,7 +4,7 @@ import Modal from "../../components/addressModal/Modal";
 export default function Addresses() {
   const { addresses, removeAddress, editAddress } = useAddressContext();
 
-  const { showModal, setShowModal } = useAddressContext();
+  const { setShowModal } = useAddressContext();
 
   return (
     <div className="addresses-main">
