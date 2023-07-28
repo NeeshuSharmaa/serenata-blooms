@@ -55,7 +55,6 @@ export default function AddressProvider({ children }) {
       addressInputs.state &&
       addressInputs.address
     ) {
-      console.log("heelo", addressInputs);
       if (addressInputs.id) {
         setAddresses((prevAddr) =>
           prevAddr.map((addr) =>
@@ -133,7 +132,7 @@ export default function AddressProvider({ children }) {
     checkoutAddress,
     setCheckoutAddress,
   };
-  console.log("address inputs", addressInputs);
+
   return (
     <AddressContext.Provider value={values}>{children}</AddressContext.Provider>
   );

@@ -9,7 +9,6 @@ export default function Store() {
   const { getFilteredItems } = useFilterContext();
 
   const filteredItems = getFilteredItems();
-  console.log(filteredItems);
 
   return (
     <div className="store">

@@ -4,7 +4,7 @@ import "./Filters.css";
 export default function Filters() {
   // const { maxPrice, minPrice } = useDataContext();
   const { filterState, dispatch } = useFilterContext();
-  console.log("filter component ran");
+
 
   const sortPriceRadios = [
     { label: "Low to High", name: "sort", id: "LH" },
@@ -23,7 +23,6 @@ export default function Filters() {
   //   { label: "5 & below 5", name: "rating", id: 4 },
   // ];
 
-  console.log("price range", filterState.priceRange);
   const pRange =
     filterState.priceRange === "2000"
       ? "₹2000"
@@ -31,7 +30,7 @@ export default function Filters() {
   const rating =
     filterState.rating === "4" ? 4 : `${filterState.rating} & below`;
 
-  console.log("price range", pRange);
+ 
 
   // const FlowerCheckbox = [
   //   { label: "Hydrangea", name: "hydrangea", id: "hydrangea" },

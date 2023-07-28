@@ -10,7 +10,6 @@ export const useAuthContext = () => useContext(AuthContext);
 export default function AuthProvider({ children }) {
   const getUser = localStorage.getItem("user");
   const user = JSON.parse(getUser);
-  console.log("user from local storage", user);
 
   const [currentUser, setCurrentUser] = useState(user);
 
@@ -18,9 +17,8 @@ export default function AuthProvider({ children }) {
   const location = useLocation();
 
   const fromLocation = location.state?.from?.pathname;
-  const tokenExists = localStorage.getItem("token")?.length ? true : false;
 
-  const [loggedIn, setLoggedIn] = useState(tokenExists);
+  const [loggedIn, setLoggedIn] = useState(user);
 
   const [userSignupData, setUserSignupData] = useState({
     firstName: "",
@@ -122,8 +120,6 @@ export default function AuthProvider({ children }) {
       className: "toast-message",
     });
   };
-
-  console.log("current user", currentUser);
 
   const values = {
     currentUser,

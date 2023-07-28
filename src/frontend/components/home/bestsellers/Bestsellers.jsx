@@ -4,7 +4,7 @@ import "./Bestsellers.css";
 
 export default function Bestsellers() {
   const { bestsellers } = useDataContext();
-  console.log("bests", bestsellers);
+  
   return (
     <div className="bestsellers">
       <div className="head-small">

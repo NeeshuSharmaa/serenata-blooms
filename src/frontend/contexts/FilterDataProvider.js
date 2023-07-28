@@ -9,8 +9,6 @@ export default function FilterDataProvider({ children }) {
   // const { minPrice } = useDataContext();
   const { products } = useDataContext();
 
-  console.log("length", products.length);
-
   const initialState = {
     search: "",
     category: [],
@@ -77,8 +75,6 @@ export default function FilterDataProvider({ children }) {
   };
 
   const [filterState, dispatch] = useReducer(filterReducer, initialState);
-
-  console.log("filterstate", filterState);
 
   const searchHandler = (arr) =>
     filterState.search.length
