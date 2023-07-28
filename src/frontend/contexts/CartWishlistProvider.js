@@ -1,11 +1,10 @@
 import axios from "axios";
-import { useContext } from "react";
-import { createContext } from "react";
+import { createContext, useContext, useReducer } from "react";
 import { useDataContext } from "./DataProvider";
 import { useAuthContext } from "./AuthProvider";
-import { useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
+import { useState } from "react";
 
 const CartWishlistContext = createContext();
 
@@ -15,32 +14,15 @@ export default function CartWishlistProvider({ children }) {
   const { products } = useDataContext();
   const { currentUser } = useAuthContext();
 
-  const [cart, setCart] = useState(currentUser?.cart || []);
-  const [wishlist, setWishlist] = useState(currentUser?.wishlist || []);
-  const [disableCartBtn, setDisableCartBtn] = useState([]);
   const navigate = useNavigate();
 
-  const totalPrice = cart?.reduce((sum, prod) => sum + prod.price, 0);
-  const discountedPrice = cart?.reduce(
-    (sum, prod) => sum + (prod.discount_price || prod.price),
-    0
-  );
+  const [disableCartBtn, setDisableCartBtn] = useState(false);
 
-  const totalDiscount = totalPrice - discountedPrice;
-  const deliveryCharges = 200;
-
-  const paymentAmount = discountedPrice + deliveryCharges;
-
-  const inCart = (id) => cart?.find((prod) => prod.id === id);
-  const inWishlist = (id) => wishlist?.find((prod) => prod.id === id);
-
-  // const currentUserData = JSON.parse(localStorage.getItem("user"));
-
-  const addToCartHandler = async (id) => {
+  const addToCart = async (id) => {
+    setDisableCartBtn(true);
     const product = products.find(({ id: prodId }) => prodId === id);
     try {
       if (currentUser?.encodedToken) {
-        console.log("inside add to cart");
         const {
           data: { cart },
         } = await axios.post(
@@ -52,26 +34,27 @@ export default function CartWishlistProvider({ children }) {
             },
           }
         );
-        setCart(cart);
+
+        cwDispatch({ type: "add-to-cart", payload: cart });
+
         toast.success(`${product.name} added to cart`, {
           className: "toast-message",
         });
-
-        // const userWithCartUpdate = { ...currentUserData, cart };
-        // localStorage.setItem("user", JSON.stringify(userWithCartUpdate));
-        setDisableCartBtn((prev) => prev.filter((ID) => ID !== id));
       } else {
         toast.warning("Login to add items into cart", {
           className: "toast-message",
         });
+        navigate("/login");
       }
     } catch (e) {
-      toast.error(e.message, {
+      toast.error("Something went Wrong", {
         className: "toast-message",
       });
+      console.log("Error in add to cart item service", e);
     }
+    setDisableCartBtn(false);
   };
-  const addToWishlistHandler = async (id) => {
+  const addToWishlist = async (id) => {
     const product = products.find(({ id: prodId }) => prodId === id);
     try {
       if (currentUser.encodedToken) {
@@ -86,27 +69,25 @@ export default function CartWishlistProvider({ children }) {
             },
           }
         );
+        cwDispatch({ type: "add-to-wishlist", payload: wishlist });
 
-        setWishlist(wishlist);
         toast.success(`${product.name} added to wishlist`, {
           className: "toast-message",
         });
-
-        // const userWithWishUpdate = { ...currentUserData, wishlist };
-        // localStorage.setItem("user", JSON.stringify(userWithWishUpdate));
       } else {
         toast.warning(`Login to add items into wishlist`, {
           className: "toast-message",
         });
+        navigate("/login");
       }
     } catch (e) {
-      toast.error(e.message, {
+      toast.error("Something went Wrong", {
         className: "toast-message",
       });
+      console.log("Error in add to Wishlist item service", e);
     }
   };
-  const deleteFromCartHandler = async (id) => {
-    console.log("delete id", id);
+  const deleteFromCart = async (id) => {
     try {
       const {
         data: { cart },
@@ -115,22 +96,20 @@ export default function CartWishlistProvider({ children }) {
           authorization: currentUser.encodedToken,
         },
       });
+      cwDispatch({ type: "delete-from-cart", payload: cart });
 
-      setCart(cart);
       toast.success("Item removed from Cart", {
         className: "toast-message",
       });
-
-      // const userWithCartUpdate = { ...currentUserData, cart };
-      // localStorage.setItem("user", JSON.stringify(userWithCartUpdate));
     } catch (e) {
-      toast.error(e.message, {
+      toast.error("Something went Wrong", {
         className: "toast-message",
       });
+      console.log("Error in delete cart item service", e);
     }
   };
 
-  const deleteWishlistHandler = async (id) => {
+  const deleteFromWishlist = async (id) => {
     try {
       const {
         data: { wishlist },
@@ -139,118 +118,176 @@ export default function CartWishlistProvider({ children }) {
           authorization: currentUser.encodedToken,
         },
       });
-      console.log("wishlist after delete", wishlist);
-      setWishlist(wishlist);
+
+      cwDispatch({ type: "delete-from-wishlist", payload: wishlist });
+
       toast.success("Item removed from wishlist", {
         className: "toast-message",
       });
-
-      // const userWithWishUpdate = { ...currentUserData, wishlist };
-      // localStorage.setItem("user", JSON.stringify(userWithWishUpdate));
     } catch (e) {
-      toast.error(e.message, {
+      toast.error("Something went Wrong", {
         className: "toast-message",
       });
+      console.log("Error in delete Wishlist item service", e);
     }
   };
 
-  const addQuantityHandler = (id) => {
-    const updatedCart = cart.map((prod) =>
-      prod.id === id ? { ...prod, qty: (prod.qty += 1) } : prod
-    );
-
-    setCart(updatedCart);
-    toast.success("Quantity of the item increased", {
-      className: "toast-message",
-    });
-
-    // const userWithCartUpdate = { ...currentUserData, cart: updatedCart };
-    // localStorage.setItem("user", JSON.stringify(userWithCartUpdate));
+  const clearCart = async (cart) => {
+    try {
+      for (const item of cart) {
+        await axios.delete(`/api/user/cart/${item.id}`, {
+          headers: {
+            authorization: currentUser.encodedToken,
+          },
+        });
+      }
+      cwDispatch({ type: "clear-cart" });
+      toast.success("Cart Cleared!!", {
+        className: "toast-message",
+      });
+    } catch (e) {
+      toast.error("Something went Wrong", {
+        className: "toast-message",
+      });
+      console.log("Error in clear cart service", e);
+    }
   };
-  const subQuantityHandler = (id) => {
-    const updatedCart = cart.map((prod) =>
-      prod.id === id
-        ? { ...prod, qty: prod.qty !== 1 ? (prod.qty -= 1) : 1 }
-        : prod
-    );
-
-    setCart(updatedCart);
-    toast.success("Quantity of the item deccreased", {
-      className: "toast-message",
-    });
-
-    // const userWithCartUpdate = { ...currentUserData, cart: updatedCart };
-    // localStorage.setItem("user", JSON.stringify(userWithCartUpdate));
+  const clearWishlist = async (wishlist) => {
+    try {
+      for (const item of wishlist) {
+        await axios.delete(`/api/user/wishlist/${item.id}`, {
+          headers: {
+            authorization: currentUser.encodedToken,
+          },
+        });
+      }
+      cwDispatch({ type: "clear-wishlist" });
+      toast.success("Wishlist Cleared !!", {
+        className: "toast-message",
+      });
+    } catch (e) {
+      toast.error("Something went Wrong", {});
+      console.log("Error in clear Wishlist service", e);
+    }
   };
-  const clearCartHandler = () => {
-    setCart([]);
-
-    toast.success("Cart successfuly Cleared!", {
-      className: "toast-message",
-    });
-
-    // const userWithCartUpdate = { ...currentUserData, cart: [] };
-    // localStorage.setItem("user", JSON.stringify(userWithCartUpdate));
+  const moveAllToCart = async (wishlist) => {
+    try {
+      for (const item of wishlist) {
+        addToCart(item.id);
+        deleteFromWishlist(item.id);
+      }
+    } catch (e) {
+      toast.error("Something went Wrong", {});
+      console.log("Error in move all wishlist items to cart service", e);
+    }
+  };
+  const moveAllToWishlist = async (cart) => {
+    try {
+      for (const item of cart) {
+        addToWishlist(item.id);
+        deleteFromCart(item.id);
+      }
+    } catch (e) {
+      toast.error("Something went Wrong", {});
+      console.log("Error in move all cart items to wishlist service", e);
+    }
   };
 
-  const clearWishlistHandler = () => {
-    setWishlist([]);
-    toast.success("Wishlist successfuly Cleared!", {
-      className: "toast-message",
-    });
+  const updateCartItemQty = async (id, actionType) => {
+    try {
+      const {
+        data: { cart },
+      } = await axios.post(
+        `api/user/cart/${id}`,
+        {
+          action: {
+            type: actionType === "INC_QTY" ? "increment" : "decrement",
+          },
+        },
+        {
+          headers: {
+            authorization: currentUser.encodedToken,
+          },
+        }
+      );
 
-    // const userWithWishUpdate = { ...currentUserData, wishlist: [] };
-    // localStorage.setItem("user", JSON.stringify(userWithWishUpdate));
+      cwDispatch({ type: "update-cart-item-qty", payload: cart });
+    } catch (e) {
+      toast.error("Something went Wrong", {
+        className: "toast-message",
+      });
+      console.log("Error in update cart item quantity service", e);
+    }
   };
 
-  const addFromCartToWishlist = (id) => {
-    const prodToAdd = cart.reduce(
-      (acc, curr) => (curr.id === id ? { ...curr, qty: 1 } : acc),
-      {}
-    );
-    setWishlist((prev) => [...prev, prodToAdd]);
-    const updatedCart = cart.filter(({ id: ID }) => ID !== id);
-    setCart(updatedCart);
-    toast.success("Items successfuly moved to wishlist", {
-      className: "toast-message",
-    });
-
-    // const updatedUser = {
-    //   ...currentUserData,
-    //   wishlist: [...currentUserData.wishlist, prodToAdd],
-    //   cart: updatedCart,
-    // };
-    // localStorage.setItem("user", JSON.stringify(updatedUser));
-  };
-  // const allCartProdsToWishlistHandler = () => {
-  //   const cartForWishlist = cart.reduce(
-  //     (acc, curr) =>
-  //       wishlist.find(({ id }) => id === curr.id)
-  //         ? acc
-  //         : [...acc, { ...curr, qty: 1 }],
-  //     []
-  //   );
-
-  //   console.log("cart to wishlist", cartForWishlist);
-  //   setWishlist((prev) => [...prev, ...cartForWishlist]);
-  //   setCart([]);
-
-  //   const userWithWishUpdate = {
-  //     ...currentUserData,
-  //     wishlist: [...currentUserData.wishlist, ...cartForWishlist],
-  //     cart: [],
-  //   };
-  //   localStorage.setItem("user", JSON.stringify(userWithWishUpdate));
-  // };
-
-  const addToCart = (id) => {
-    setDisableCartBtn((prev) => [...prev, id]);
-    addToCartHandler(id);
+  const moveToWishlist = (id) => {
+    addToWishlist(id);
+    deleteFromCart(id);
   };
   const moveToCart = (id) => {
-    addToCartHandler(id);
-    deleteWishlistHandler(id);
+    addToCart(id);
+    deleteFromWishlist(id);
   };
+
+  const cwReducer = (state, { type, payload }) => {
+    switch (type) {
+      case "add-to-cart": {
+        return { ...state, cart: payload };
+      }
+      case "add-to-wishlist": {
+        return { ...state, wishlist: payload };
+      }
+      case "delete-from-cart": {
+        return { ...state, cart: payload };
+      }
+      case "delete-from-wishlist": {
+        return { ...state, wishlist: payload };
+      }
+      case "update-cart-item-qty": {
+        return { ...state, cart: payload };
+      }
+      case "clear-cart": {
+        return { ...state, cart: [] };
+      }
+      case "clear-wishlist": {
+        return { ...state, wishlist: [] };
+      }
+
+      default: {
+        return { cart: [], wishlist: [] };
+      }
+    }
+  };
+
+  const [cartWishlistState, cwDispatch] = useReducer(cwReducer, {
+    cart: [],
+    wishlist: [],
+  });
+
+  const totalPrice = cartWishlistState.cart.reduce(
+    (sum, prod) => sum + (prod.qty ? prod.price * prod.qty : prod.price),
+    0
+  );
+  const discountedPrice = cartWishlistState.cart.reduce(
+    (sum, prod) =>
+      prod.discount_price
+        ? prod.qty
+          ? prod.discount_price * prod.qty
+          : prod.discount_price
+        : prod.qty
+        ? prod.price * prod.qty
+        : prod.price,
+    0
+  );
+
+  const totalDiscount = totalPrice - discountedPrice;
+  const deliveryCharges = 200;
+
+  const paymentAmount = discountedPrice + deliveryCharges;
+
+  const inCart = (id) => cartWishlistState.cart.find((prod) => prod.id === id);
+  const inWishlist = (id) =>
+    cartWishlistState.wishlist.find((prod) => prod.id === id);
 
   function checkoutHandler() {
     navigate("/");
@@ -260,28 +297,31 @@ export default function CartWishlistProvider({ children }) {
   }
 
   const values = {
-    cart,
+    cartWishlistState,
+
     inCart,
-    wishlist,
+
     inWishlist,
+    disableCartBtn,
     totalPrice,
     totalDiscount,
     paymentAmount,
     deliveryCharges,
-    disableCartBtn,
-    setDisableCartBtn,
-    addToCartHandler,
+
     addToCart,
+
+    addToWishlist,
+
+    deleteFromCart,
+
+    deleteFromWishlist,
+    updateCartItemQty,
+    clearCart,
+    clearWishlist,
     moveToCart,
-    addToWishlistHandler,
-    addFromCartToWishlist,
-    deleteFromCartHandler,
-    clearCartHandler,
-    clearWishlistHandler,
-    deleteWishlistHandler,
-    // allCartProdsToWishlistHandler,
-    addQuantityHandler,
-    subQuantityHandler,
+    moveToWishlist,
+    moveAllToCart,
+    moveAllToWishlist,
     checkoutHandler,
   };
   return (

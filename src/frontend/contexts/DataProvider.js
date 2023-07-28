@@ -15,30 +15,6 @@ export default function DataProvider({ children }) {
   const discountPercentage = (orignal, discount) =>
     Math.round(((orignal - discount) / orignal) * 100);
 
-  // const maxPrice = products?.reduce(
-  //   (acc, curr) =>
-  //     curr.discount_price
-  //       ? curr.discountPrice > acc
-  //         ? curr.discountPrice
-  //         : acc
-  //       : curr.price > acc
-  //       ? curr.price
-  //       : acc,
-  //   0
-  // );
-  // const minPrice = products?.reduce(
-  //   (acc, curr) =>
-  //     curr.discount_price
-  //       ? curr.discountPrice < acc
-  //         ? curr.discountPrice
-  //         : acc
-  //       : curr.price < acc
-  //       ? curr.price
-  //       : acc,
-  //   Infinity
-  // );
-  // console.log("max price", maxPrice, "min price", minPrice);
-
   const getData = async () => {
     try {
       const {

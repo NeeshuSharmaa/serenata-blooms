@@ -17,10 +17,9 @@ export default function HorizontalCard({
   const { discountPercentage } = useDataContext();
   const {
     inWishlist,
-    addFromCartToWishlist,
-    deleteFromCartHandler,
-    addQuantityHandler,
-    subQuantityHandler,
+   
+    deleteFromCart,
+    moveToWishlist, updateCartItemQty, 
   } = useCartWishlistContext();
 
   const [moveActive, setMoveActive] = useState(false);
@@ -69,14 +68,17 @@ export default function HorizontalCard({
             <div>
               <button
                 className="quant-btn sub-quant"
-                onClick={() => subQuantityHandler(id)}
+                onClick={()=>updateCartItemQty(id, "DEC_QTY")}
+                disabled={qty===1}
+              
               >
                 -
               </button>
               <span className="quantity-num">{qty}</span>
               <button
                 className="quant-btn add-quant"
-                onClick={() => addQuantityHandler(id)}
+                onClick={()=>updateCartItemQty(id, "INC_QTY")}
+                
               >
                 +
               </button>
@@ -89,14 +91,15 @@ export default function HorizontalCard({
           <span>Are you sure you want to move the item from cart?</span>
           <button
             className={inWishlist(id) ? "disabled-btn" : "wishlist-btn"}
-            onClick={() => addFromCartToWishlist(id)}
+           
             disabled={inWishlist(id)}
+            onClick={()=>moveToWishlist(id)}
           >
             {inWishlist(id) ? "Already in Wishlist" : "Move to Wishlist"}
           </button>
           <button
             className="remove-btn"
-            onClick={() => deleteFromCartHandler(id)}
+            onClick={() => deleteFromCart(id)}
           >
             Remove from Cart
           </button>

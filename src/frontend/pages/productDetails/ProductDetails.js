@@ -23,13 +23,8 @@ export default function ProductDetails() {
 
   const { dispatch } = useFilterContext();
 
-  const {
-    inCart,
-    inWishlist,
-    addToCart,
-    addToWishlistHandler,
-    deleteWishlistHandler,
-  } = useCartWishlistContext();
+  const { inCart, inWishlist, addToCart, addToWishlist, deleteFromWishlist } =
+    useCartWishlistContext();
 
   useEffect(() => {
     dispatch({ type: "CLEAR_ALL_HANDLER" });
@@ -102,9 +97,7 @@ export default function ProductDetails() {
           <button
             className="secondary-btn"
             onClick={() =>
-              inWishlist(id)
-                ? deleteWishlistHandler(id)
-                : addToWishlistHandler(id)
+              inWishlist(id) ? deleteFromWishlist(id) : addToWishlist(id)
             }
           >
             {inWishlist(id) ? (

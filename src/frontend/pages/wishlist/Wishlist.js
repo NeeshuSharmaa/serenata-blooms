@@ -11,11 +11,12 @@ export default function Wishlist() {
   const { dispatch } = useFilterContext();
   const { discountPercentage } = useDataContext();
   const {
+    cartWishlistState: { wishlist },
     inCart,
-    wishlist,
     moveToCart,
-    deleteWishlistHandler,
-    clearWishlistHandler,
+    deleteFromWishlist,
+    clearWishlist,
+    moveAllToCart,
   } = useCartWishlistContext();
 
   const navigate = useNavigate();
@@ -25,21 +26,28 @@ export default function Wishlist() {
   }, [dispatch]);
 
   const noOfItems = wishlist.length;
-  if (!wishlist.length) {
+  if (noOfItems === 0) {
     return <EmptyWishlist />;
   } else {
     return (
       <div className="wishlist">
         <h2>Wishlist ({noOfItems} items)</h2>
         <hr />
-        <span
-          style={{ color: "#535766", alignSelf: "flex-end", cursor: "pointer" }}
-          onClick={clearWishlistHandler}
+        <div
+          style={{
+            color: "#535766",
+            display: "flex",
+            alignSelf: "flex-end",
+            cursor: "pointer",
+            gap: "1rem",
+          }}
         >
-          Clear Wishlist
-        </span>
+          <span onClick={() => clearWishlist(wishlist)}>Clear Wishlist</span>
+          <span>|</span>
+          <span onClick={() => moveAllToCart(wishlist)}>Move all to Cart</span>
+        </div>
         <div className="wishlist-items">
-          {wishlist?.map((prod) => (
+          {wishlist.map((prod) => (
             <div className="wishlist-prod" key={prod.id}>
               <div className="img-div">
                 <Link to={`/product-details/${prod.id}`}>
@@ -83,9 +91,7 @@ export default function Wishlist() {
                 </span>
                 <span>|</span>
 
-                <span onClick={() => deleteWishlistHandler(prod.id)}>
-                  Remove
-                </span>
+                <span onClick={() => deleteFromWishlist(prod.id)}>Remove</span>
               </div>
               {prod.tag && <p className={`tag ${prod.tag}`}>{prod.tag}</p>}
             </div>

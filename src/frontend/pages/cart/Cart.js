@@ -8,7 +8,11 @@ import OrderSummary from "./OrderSummary";
 
 export default function Cart() {
   const { dispatch } = useFilterContext();
-  const { cart, clearCartHandler } = useCartWishlistContext();
+  const {
+    cartWishlistState: { cart },
+    clearCart,
+    moveAllToWishlist,
+  } = useCartWishlistContext();
 
   const noOfItems = cart?.length;
 
@@ -19,10 +23,8 @@ export default function Cart() {
           <span>SHOPPING CART</span> <span>{noOfItems} items</span>
         </h2>
         <div className="clear-cart-atonce">
-          <span onClick={clearCartHandler}>Remove All from Cart</span>
-          <span
-          // onClick={allCartProdsToWishlistHandler}
-          >
+          <span onClick={() => clearCart(cart)}>Remove All from Cart</span>
+          <span onClick={() => moveAllToWishlist(cart)}>
             Move All to Wishlist
           </span>
         </div>

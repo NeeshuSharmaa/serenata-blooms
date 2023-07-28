@@ -24,12 +24,13 @@ export default function ProductCard({
     inCart,
     inWishlist,
     addToCart,
-    addToWishlistHandler,
+    addToWishlist,
     disableCartBtn,
-    deleteWishlistHandler,
+    deleteFromWishlist,
   } = useCartWishlistContext();
 
   const navigate = useNavigate();
+  
 
   return (
     <div className="product-card">
@@ -50,8 +51,8 @@ export default function ProductCard({
             icon={faHeart}
             onClick={() =>
               inWishlist(id)
-                ? deleteWishlistHandler(id)
-                : addToWishlistHandler(id)
+                ? deleteFromWishlist(id)
+                : addToWishlist(id)
             }
           />
         </div>
@@ -91,7 +92,8 @@ export default function ProductCard({
       </div>
 
       <button
-        disabled={disableCartBtn.includes(id)}
+      disabled={disableCartBtn}
+      
         onClick={() => (inCart(id) ? navigate("/cart") : addToCart(id))}
       >
         {inCart(id) ? (

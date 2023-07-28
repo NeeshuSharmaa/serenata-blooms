@@ -25,7 +25,7 @@ function App() {
 
   const showFooter =
     pathname === "/login" || pathname === "/signup" ? false : true;
-  console.log(showFooter);
+
   return (
     <div className="App">
       <Navbar />
