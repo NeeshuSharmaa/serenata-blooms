@@ -14,8 +14,8 @@ export default function About() {
 
         <p>
           The finest quality freshly-cut blooms, each carefully selected
-          directly from flower farms, hand-arranged by our expert florists,
-          lovingly presented, and safely delivered in perfect condition.
+          directly from flower farms, lovingly presented, and safely delivered
+          in perfect condition.
         </p>
         <Link to="/store">
           <button className="discover-btn">
