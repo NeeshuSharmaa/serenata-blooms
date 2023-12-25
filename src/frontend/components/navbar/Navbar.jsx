@@ -5,6 +5,8 @@ import {
   faCartShopping,
   faHeart,
   faUser,
+  faBars,
+  faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useFilterContext } from "../../contexts/FilterDataProvider";
@@ -29,7 +31,7 @@ export default function Navbar() {
         value={filterState.search}
         className="search"
         type="text"
-        placeholder="Search via the specific flower name or the product name"
+        placeholder="Search flower name or the product name"
         onChange={(e) => {
           dispatch({ type: "SEARCH_HANDLER", payload: e.target.value });
           navigate("/store");
@@ -38,6 +40,7 @@ export default function Navbar() {
       />
 
       <div className="nav-links">
+        <FontAwesomeIcon icon={faMagnifyingGlass} className="search-icon" />
         <NavLink to="/store">
           <FontAwesomeIcon icon={faStore} className="font-aw-icons" />
         </NavLink>
@@ -51,6 +54,7 @@ export default function Navbar() {
         <NavLink to="/profile">
           {" "}
           <FontAwesomeIcon icon={faUser} className="font-aw-icons" />
+          <FontAwesomeIcon icon={faBars} className="nav-menu" />
         </NavLink>
       </div>
     </nav>
