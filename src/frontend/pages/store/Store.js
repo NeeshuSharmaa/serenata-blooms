@@ -12,15 +12,6 @@ export default function Store() {
 
   return (
     <div className="store">
-      {/* <div className="store-hero-section">
-        <img className="store-banner" src="/assets/images/store-banner.jpg" />
-        <input
-          className="search"
-          type="text"
-          placeholder="Search via the specific flower name or the product name"
-        />
-      </div> */}
-
       <div className="filter-n-products">
         <Filters />
         <div className="search-n-product">

@@ -10,7 +10,6 @@ export default function Profile() {
   return (
     <div className="profile-page">
       <h2>Your Account</h2>
-
       <div className="profile-page-main">
         <aside>
           <span

@@ -7,7 +7,6 @@ export const useDataContext = () => useContext(DataContext);
 
 export default function DataProvider({ children }) {
   const [products, setProducts] = useState([]);
-
   const [categories, setCategories] = useState([]);
 
   const bestsellers = products.filter((prod) => prod.tag === "Bestseller");
@@ -35,10 +34,7 @@ export default function DataProvider({ children }) {
   }, []);
 
   const values = {
-    // maxPrice,
-    // minPrice,
     products,
-
     categories,
     bestsellers,
     discountPercentage,

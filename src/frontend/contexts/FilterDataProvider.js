@@ -6,7 +6,6 @@ const FilterContext = createContext();
 export const useFilterContext = () => useContext(FilterContext);
 
 export default function FilterDataProvider({ children }) {
-  // const { minPrice } = useDataContext();
   const { products } = useDataContext();
 
   const initialState = {
@@ -98,13 +97,6 @@ export default function FilterDataProvider({ children }) {
         )
       : arr;
 
-  // const flowerFilterHandler = (arr) =>
-  //   filterState.flowers.length
-  //     ? arr.filter((prod) =>
-  //         filterState.flowers.some((flower) => prod.blooms.includes(flower))
-  //       )
-  //     : arr;
-
   const priceRangeHandler = (arr) =>
     filterState.priceRange < 14500
       ? arr.filter((prod) =>
@@ -139,13 +131,6 @@ export default function FilterDataProvider({ children }) {
             : b.price - a.price
         )
       : arr.sort((a, b) =>
-          // a.discount_price
-          //   ? b.discount_price
-          //     ? a.discount_price - b.discount_Price
-          //     : a.discount_Price - b.price
-          //   : b.discount_Price
-          //   ? a.price - b.discount_Price
-          //   : a.price - b.price
           b.discount_price
             ? a.discount_price
               ? a.discount_price - b.discount_price
@@ -158,7 +143,6 @@ export default function FilterDataProvider({ children }) {
     const filterFunctions = [
       searchHandler,
       categoryFilterHandler,
-      // flowerFilterHandler,
       priceRangeHandler,
       tagFilterHandler,
       ratingFilterHandler,

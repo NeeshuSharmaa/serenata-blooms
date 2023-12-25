@@ -36,7 +36,6 @@ export default function Navbar() {
           dispatch({ type: "SEARCH_HANDLER", payload: e.target.value });
           navigate("/store");
         }}
-        // onKeyDown={(e) => e.key === "Enter" && navigate("/store")}
       />
 
       <div className="nav-links">

@@ -10,7 +10,6 @@ export default function Addresses() {
     <div className="addresses-main">
       <div className="addresses-header">
         <h2>YOUR ADDRESSES</h2>
-
         <button className="address-btn" onClick={() => setShowModal(true)}>
           + Add new address
         </button>

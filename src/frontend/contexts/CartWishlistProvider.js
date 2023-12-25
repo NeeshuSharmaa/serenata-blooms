@@ -298,22 +298,16 @@ export default function CartWishlistProvider({ children }) {
 
   const values = {
     cartWishlistState,
-
     inCart,
-
     inWishlist,
     disableCartBtn,
     totalPrice,
     totalDiscount,
     paymentAmount,
     deliveryCharges,
-
     addToCart,
-
     addToWishlist,
-
     deleteFromCart,
-
     deleteFromWishlist,
     updateCartItemQty,
     clearCart,

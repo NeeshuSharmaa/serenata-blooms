@@ -4,7 +4,6 @@ import { useCartWishlistContext } from "../../contexts/CartWishlistProvider";
 export default function OrderSummary({ noOfItems }) {
   const { totalPrice, totalDiscount, deliveryCharges, paymentAmount } =
     useCartWishlistContext();
-
   const { checkoutHandler } = useCartWishlistContext();
 
   const { pathname } = useLocation();

@@ -90,7 +90,6 @@ export default function Wishlist() {
                   {inCart(prod.id) ? "Go to Cart →" : "Move to Cart"}
                 </span>
                 <span>|</span>
-
                 <span onClick={() => deleteFromWishlist(prod.id)}>Remove</span>
               </div>
               {prod.tag && <p className={`tag ${prod.tag}`}>{prod.tag}</p>}
