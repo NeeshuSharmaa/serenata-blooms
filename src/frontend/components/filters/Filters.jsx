@@ -1,10 +1,9 @@
 import { useFilterContext } from "../../contexts/FilterDataProvider";
 import "./Filters.css";
 
-export default function Filters() {
+export default function Filters({ showFilters }) {
   // const { maxPrice, minPrice } = useDataContext();
   const { filterState, dispatch } = useFilterContext();
-
 
   const sortPriceRadios = [
     { label: "Low to High", name: "sort", id: "LH" },
@@ -30,8 +29,6 @@ export default function Filters() {
   const rating =
     filterState.rating === "4" ? 4 : `${filterState.rating} & below`;
 
- 
-
   // const FlowerCheckbox = [
   //   { label: "Hydrangea", name: "hydrangea", id: "hydrangea" },
   //   { label: "Rose", name: "rose", id: "rose" },
@@ -45,7 +42,11 @@ export default function Filters() {
   // const colors = ["Purple", "Pink", "Green", "White", "Blue", "Yellow", "Red", "Orange"];
 
   return (
-    <aside className="filters-outer">
+    <aside
+      className={
+        showFilters ? "filters-outer filter-sidebar-active" : "filters-outer"
+      }
+    >
       <div className="filter-head">
         <h2>Filters</h2>
         <p onClick={() => dispatch({ type: "CLEAR_ALL_HANDLER" })}>Clear All</p>

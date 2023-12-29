@@ -5,7 +5,6 @@
   position: sticky;
   top: 100px;
   height: 100vh;
-  /* overflow-y: scroll; */
 }
 .sort-price,
 .category-checkbox,
@@ -18,7 +17,6 @@
   gap: 1rem;
   border-bottom: 1px solid lightgray;
   padding-bottom: 1rem;
-  /* border-bottom: 1px solid rgb(160, 158, 158); */
 }
 .sort-price > div,
 .category-checkbox > div,
@@ -71,10 +69,15 @@
   border: 1.5px solid black;
   outline: none;
 }
-@media screen and (max-width: 768px) {
-}
+
 @media screen and (max-width: 600px) {
   .filters-outer {
     display: none;
+  }
+  .filters-outer.filter-sidebar-active {
+    display: block;
+    z-index: 2;
+    position: fixed;
+    background-color: white;
   }
 }
