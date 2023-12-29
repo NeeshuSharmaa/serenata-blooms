@@ -189,4 +189,7 @@
   .orders-history-main {
     padding: 10rem 2rem 0 2rem;
   }
+  .profile-page-main > aside > span {
+    padding: 1.25rem;
+  }
 }
