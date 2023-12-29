@@ -58,29 +58,50 @@ nav {
   border: 1.5px solid var(--dark-green);
   outline: none;
 }
-.search-icon {
+
+.nav-menu,
+.caret {
   display: none;
 }
-.nav-menu {
-  display: none;
-}
+
 @media screen and (max-width: 768px) {
   nav {
     width: 100%;
   }
-  .font-aw-icons,
-  .search {
+
+  .logo-inner {
     display: none;
   }
-  .nav-menu,
-  .search-icon {
+}
+@media screen and (max-width: 600px) {
+  .nav-child-link {
+    display: none;
+  }
+  .nav-menu {
     display: block;
     color: white;
     height: 24px;
     width: 24px;
+    padding-right: 2rem;
   }
-  .search-icon {
-    position: relative;
-    right: -45%;
+  .menu-active {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    background-color: var(--hover-green);
+  }
+  .caret {
+    position: absolute;
+    top: 36px;
+    right: 32px;
+    height: 24px;
+    width: 24px;
+    color: var(--hover-green);
+  }
+  .menu-active > .nav-child-link,
+  .caret {
+    display: block;
   }
 }
