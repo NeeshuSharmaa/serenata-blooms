@@ -40,3 +40,8 @@
   text-align: center;
   gap: 2rem;
 }
+@media screen and (max-width: 600px) {
+  .empty-wishlist {
+    height: 100vh;
+  }
+}
