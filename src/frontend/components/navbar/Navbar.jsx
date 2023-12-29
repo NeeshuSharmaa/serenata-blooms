@@ -46,16 +46,32 @@ export default function Navbar() {
 
       <div style={{ position: "relative" }}>
         <div className={menuActive ? "nav-links menu-active" : "nav-links"}>
-          <NavLink to="/store" className="nav-child-link">
+          <NavLink
+            to="/store"
+            className="nav-child-link"
+            onClick={() => (menuActive ? setMenuActive(false) : null)}
+          >
             <FontAwesomeIcon icon={faStore} className="font-aw-icons" />
           </NavLink>
-          <NavLink to="/cart" className="nav-child-link">
+          <NavLink
+            to="/cart"
+            className="nav-child-link"
+            onClick={() => (menuActive ? setMenuActive(false) : null)}
+          >
             <FontAwesomeIcon icon={faCartShopping} className="font-aw-icons" />
           </NavLink>
-          <NavLink to="/wishlist" className="nav-child-link">
+          <NavLink
+            to="/wishlist"
+            className="nav-child-link"
+            onClick={() => (menuActive ? setMenuActive(false) : null)}
+          >
             <FontAwesomeIcon icon={faHeart} className="font-aw-icons" />
           </NavLink>
-          <NavLink to="/profile" className="nav-child-link">
+          <NavLink
+            to="/profile"
+            className="nav-child-link"
+            onClick={() => (menuActive ? setMenuActive(false) : null)}
+          >
             <FontAwesomeIcon icon={faUser} className="font-aw-icons" />
           </NavLink>
         </div>
