@@ -107,6 +107,10 @@
 }
 @media screen and (max-width: 480px) {
   .about-content {
-    left: 2%;
+    left: 5%;
+  }
+  .discover-btn {
+    padding: 1.25rem;
+    font-size: 0.8rem;
   }
 }
