@@ -17,17 +17,19 @@ export default function HorizontalCard({
   const { discountPercentage } = useDataContext();
   const {
     inWishlist,
-   
+
     deleteFromCart,
-    moveToWishlist, updateCartItemQty, 
+    moveToWishlist,
+    updateCartItemQty,
   } = useCartWishlistContext();
 
   const [moveActive, setMoveActive] = useState(false);
 
   return (
     <div className="horizontal-card">
-      <div style={{ fontSize: "0", display: "flex" }}>
+      <div className="img-div">
         <img src={image} alt={name} className="hc-img" />
+        {tag && <p className={`tag ${tag}`}>{tag}</p>}
       </div>
       <FontAwesomeIcon
         icon={faXmark}
@@ -68,17 +70,15 @@ export default function HorizontalCard({
             <div>
               <button
                 className="quant-btn sub-quant"
-                onClick={()=>updateCartItemQty(id, "DEC_QTY")}
-                disabled={qty===1}
-              
+                onClick={() => updateCartItemQty(id, "DEC_QTY")}
+                disabled={qty === 1}
               >
                 -
               </button>
               <span className="quantity-num">{qty}</span>
               <button
                 className="quant-btn add-quant"
-                onClick={()=>updateCartItemQty(id, "INC_QTY")}
-                
+                onClick={() => updateCartItemQty(id, "INC_QTY")}
               >
                 +
               </button>
@@ -91,22 +91,16 @@ export default function HorizontalCard({
           <span>Are you sure you want to move the item from cart?</span>
           <button
             className={inWishlist(id) ? "disabled-btn" : "wishlist-btn"}
-           
             disabled={inWishlist(id)}
-            onClick={()=>moveToWishlist(id)}
+            onClick={() => moveToWishlist(id)}
           >
             {inWishlist(id) ? "Already in Wishlist" : "Move to Wishlist"}
           </button>
-          <button
-            className="remove-btn"
-            onClick={() => deleteFromCart(id)}
-          >
+          <button className="remove-btn" onClick={() => deleteFromCart(id)}>
             Remove from Cart
           </button>
         </div>
       )}
-
-      {tag && <p className={`tag ${tag}`}>{tag}</p>}
     </div>
   );
 }
