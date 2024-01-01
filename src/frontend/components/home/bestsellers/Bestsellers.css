@@ -53,9 +53,16 @@
 
 @media screen and (max-width: 600px) {
   .best {
-    width: 300px;
+    width: 80%;
   }
   .best div > img {
-    width: 300px;
+    width: 100%;
+    height: 80%;
+  }
+  .best-info {
+    padding-left: 0;
+  }
+  .best-info h3 {
+    font-size: 1.25rem;
   }
 }

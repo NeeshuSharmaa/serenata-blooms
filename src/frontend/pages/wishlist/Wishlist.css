@@ -42,6 +42,6 @@
 }
 @media screen and (max-width: 600px) {
   .empty-wishlist {
-    height: 100vh;
+    height: 80vh;
   }
 }
