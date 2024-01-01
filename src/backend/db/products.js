@@ -73,6 +73,7 @@ export const products = [
     discount_price: 4999,
     image: "/assets/images/beyond_blue.webp",
     categoryName: "Sympathy",
+    tag: "Bestseller",
     rating: 4.6,
   },
   {
@@ -145,7 +146,7 @@ export const products = [
     price: 2549,
     image: "/assets/images/garden_of_love.webp",
     categoryName: "Birthday",
-    tag: "Bestseller",
+
     rating: 4.8,
   },
   {
@@ -325,7 +326,7 @@ export const products = [
 
   {
     _id: uuid(),
-    name: "Sky Blue Delight",
+    name: "Sky Delight",
     description:
       "The hydrangea and ivory rose bouquet exudes an elegant and timeless charm with its combination of delicate hydrangea blooms and pristine ivory roses, blending the lushness of hydrangeas with the purity and sophistication of ivory roses.",
     blooms: ["rose", "hydrangea"],
@@ -356,7 +357,6 @@ export const products = [
     discount_price: 2149,
     image: "/assets/images/belle_ball.webp",
     categoryName: "Apology",
-    tag: "Bestseller",
     rating: 4.9,
   },
 ];
