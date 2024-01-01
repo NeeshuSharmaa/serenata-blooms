@@ -4,7 +4,7 @@
   padding: 0 1rem;
   justify-content: center;
   flex-wrap: wrap;
-  height: 100vh;
+  min-height: 100vh;
 }
 .checkout-address {
   padding: 2rem 5rem 3rem 3rem;
@@ -85,5 +85,22 @@
   }
   .checkout-container > div {
     width: 280px;
+  }
+  .select-address {
+    gap: 0;
+    padding: 0 1rem;
+  }
+  .checkout-container {
+    position: unset;
+    padding: 1rem 0 2rem 0;
+  }
+  .checkout-address {
+    padding: 2rem 0 0 0;
+  }
+  .checkout-address-header > h2 {
+    font-size: 1.25rem;
+  }
+  .address-details {
+    padding: 1rem 0 2rem 1rem;
   }
 }

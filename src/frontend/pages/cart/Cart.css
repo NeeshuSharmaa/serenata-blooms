@@ -107,10 +107,7 @@
     align-items: center;
     text-align: center;
   }
-  .xMark {
-    top: 5px;
-    right: -15px;
-  }
+
   .empty-cart > .img-div > img {
     width: 300px;
   }
@@ -118,6 +115,7 @@
 @media screen and (max-width: 480px) {
   .cart {
     gap: 0;
+    padding: 0 1.25rem;
   }
   .cart-items {
     padding: 3rem 0 1rem 0;

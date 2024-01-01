@@ -134,7 +134,11 @@
     gap: 0;
   }
   .hc-img {
-    width: 250px;
-    height: 250px;
+    width: 220px;
+    height: 220px;
+  }
+  .xMark {
+    top: 5px;
+    right: -5px;
   }
 }
