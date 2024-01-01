@@ -116,11 +116,18 @@
   }
 }
 @media screen and (max-width: 480px) {
-  .checkout-container {
-    position: unset;
+  .cart {
+    gap: 0;
   }
-  .checkout-container > div {
-    width: 300px;
+  .cart-items {
+    padding: 3rem 0 1rem 0;
+  }
+
+  .cart-items > h2 {
+    font-size: 1.25rem;
+  }
+  .clear-cart-atonce > span {
+    font-size: 0.9rem;
   }
 }
 

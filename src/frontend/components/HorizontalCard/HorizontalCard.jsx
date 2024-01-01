@@ -40,7 +40,7 @@ export default function HorizontalCard({
       {!moveActive && (
         <div className="prod-info">
           <h3>{name}</h3>
-          <p>{description.slice(0, 40)}...</p>
+          <p>{description.slice(0, 30)}...</p>
 
           {discount_price ? (
             <div className="price">

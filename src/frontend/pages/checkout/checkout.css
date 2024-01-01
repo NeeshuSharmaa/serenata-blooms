@@ -77,3 +77,13 @@
     padding: 2rem 2rem 0 2rem;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .checkout-container {
+    position: unset;
+    padding: 1rem 0 2rem 0;
+  }
+  .checkout-container > div {
+    width: 280px;
+  }
+}
