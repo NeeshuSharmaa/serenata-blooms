@@ -108,3 +108,31 @@
   width: 20px;
   height: 15px;
 }
+@media screen and (max-width: 400px) {
+  .login-page,
+  .signup-page {
+    justify-content: center;
+    margin-top: 0;
+  }
+  .login-main,
+  .signup-main {
+    width: 300px;
+    padding: 2rem;
+    box-shadow: none;
+  }
+  .login-main > h1,
+  .signup-main > h1 {
+    font-size: 2rem;
+  }
+  .go-to-link {
+    align-self: center;
+  }
+  .go-to-link > span,
+  .go-to-link > a {
+    font-size: 1.1rem;
+  }
+  .signup-main > .name-inputs {
+    flex-direction: column;
+    align-items: unset;
+  }
+}
