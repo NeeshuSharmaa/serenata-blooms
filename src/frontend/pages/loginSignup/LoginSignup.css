@@ -129,7 +129,7 @@
   }
   .go-to-link > span,
   .go-to-link > a {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
   .signup-main > .name-inputs {
     flex-direction: column;
