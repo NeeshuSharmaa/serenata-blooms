@@ -61,3 +61,25 @@
   color: var(--dark-blue);
   cursor: pointer;
 }
+
+@media screen and (max-width: 500px) {
+  .modal-header {
+    padding: 1.25rem;
+  }
+  .modal-body {
+    gap: 0.8rem;
+  }
+  .modal-body > div {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .modal-body > input,
+  .modal-body > div > input {
+    padding: 0.5rem 1rem;
+  }
+  .modal-footer {
+    gap: 0.5rem;
+    padding: 1.25rem;
+  }
+}

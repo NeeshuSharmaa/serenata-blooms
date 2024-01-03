@@ -94,7 +94,7 @@ export default function Modal() {
         <div className="modal-footer">
           <span onClick={cancelAddress}>Cancel</span>
           <span>|</span>
-          <span onClick={fillWithDummyAddress}>Fill with Dummy Address</span>
+          <span onClick={fillWithDummyAddress}>Fill Dummy Address</span>
           <span>|</span>
           <span onClick={saveAddress}>Save</span>
         </div>
